@@ -1,7 +1,7 @@
 from ur_ikfast import ur_kinematics
 import numpy as np
 
-robot_name = 'ur10'
+robot_name = "ur3e"
 arm = ur_kinematics.URKinematics(robot_name)
 ikfast_res = 0
 total = 10000

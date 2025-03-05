@@ -6,8 +6,9 @@ import matplotlib.pyplot as plt
 import json
 
 
-# Initialize the UR3e Kinematics
-ur3e_arm = ur_kinematics.URKinematics('ur3e')
+if __name__ == "__main__":
+    # Initialize the UR3e Kinematics
+    ur3e_arm = ur_kinematics.URKinematics("ur3e")
 
 def compute_inverse_kinematics(position, roll, pitch, yaw, last_joint=None):
     # Convert roll, pitch, yaw to quaternion
@@ -130,23 +131,33 @@ def transform_coordinates_to_joint_angles(coordinates, orientation=(None, None, 
             pass
     return joint_angles
 
-# Generate and visualize the path
-# origin is the start position of the cube first corner where it will start filling the cube (and z is the height of the cube, so the arm will stay to the same altitude)
-# direction is the direction of the cube filling
-# width is the width of the cube
-# length is the length of the cube
-# step is the step of the filling (how much the arm will move in the cube)
-# depth is how much the arm will go down when it reach the end of the cube
-path = generate_path_square(origin=(0.2, 0.2, 0.2), direction=(1, 0, 0), width=0.15, length=0.15, step=0.05, depth=0.05)
+if __name__ == "__main__":
+    # Generate and visualize the path
+    # origin is the start position of the cube first corner where it will start filling the cube (and z is the height of the cube, so the arm will stay to the same altitude)
+    # direction is the direction of the cube filling
+    # width is the width of the cube
+    # length is the length of the cube
+    # step is the step of the filling (how much the arm will move in the cube)
+    # depth is how much the arm will go down when it reach the end of the cube
+    path = generate_path_square(
+        origin=(0.2, 0.2, 0.2),
+        direction=(1, 0, 0),
+        width=0.15,
+        length=0.15,
+        step=0.05,
+        depth=0.05,
+    )
 
-print("Number of paths :", len(path))
+    print("Number of paths :", len(path))
 
-print("Computing joint angles...")
+    print("Computing joint angles...")
 
-# Compute joint angles for the generated path (list of (x, y, z) points). Could be used with other paths such as circle, triangle, line, etc.
-joint_trajectory = transform_coordinates_to_joint_angles(path, orientation=(0, 179.942, 0)) # Orientation, roll, pitch and yaw, defined in degree. 180 to look to the bottom (180 degree make issue, so 179.942 is the closest value to 180 degree that works)  
-print("Joint Trajectory for Square:")
-print(joint_trajectory)
+    # Compute joint angles for the generated path (list of (x, y, z) points). Could be used with other paths such as circle, triangle, line, etc.
+    joint_trajectory = transform_coordinates_to_joint_angles(
+        path, orientation=(0, 179.942, 0)
+    )  # Orientation, roll, pitch and yaw, defined in degree. 180 to look to the bottom (180 degree make issue, so 179.942 is the closest value to 180 degree that works)
+    print("Joint Trajectory for Square:")
+    print(joint_trajectory)
 
-# Generate trajectory file, to be used with the UR robot (URSim or real robot)
-generate_trajectory_file(joint_trajectory, filename="square_trajectory.json")
+    # Generate trajectory file, to be used with the UR robot (URSim or real robot)
+    generate_trajectory_file(joint_trajectory, filename="square_trajectory.json")
