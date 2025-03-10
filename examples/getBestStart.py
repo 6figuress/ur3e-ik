@@ -1,6 +1,7 @@
 import numpy as np
 from ur_ikfast import ur_kinematics
 from itertools import combinations, product
+import copy
 
 
 sol_pos_1 = [
@@ -15,6 +16,14 @@ sol_pos_3 = [
     [5, 30, 89],
     [5, 1, 90],
 ]
+sol_pos_4 = [
+    [5, 30, 89],
+    [5, 1, 90],
+]
+sol_pos_5 = [
+    [5, 30, 89],
+    [5, 1, 90],
+]
 
 
 # A position is an array with 6 (rad) angles, corresponding to each joint
@@ -25,6 +34,56 @@ sol_pos_3 = [
 
 ur3e_arm = ur_kinematics.URKinematics("ur3e")
 
+# Class to store a full trajectory
+class TrajAgainstTheMachine:
+    trajectory: list[list[float]] = []
+    weight: float = 0.0
+
+    def __init__(self, traj: list[list[float]]):
+        self.trajectory = traj
+
+    def __lt__(self, other):
+         return self.weight < other.weight
+
+    def eval_weight(self):
+        self.weight = 0
+        for i in self.trajectory:
+            self.weight += i[2]
+
+    def add_point(self, pos: list[float]):
+        return TrajAgainstTheMachine(self.trajectory + (pos))
+
+
+def naive_search(nodes: np.ndarray[np.ndarray[float]]):
+    results: list[TrajAgainstTheMachine]= []
+    def helper(depth: int, results: list[TrajAgainstTheMachine]):
+        if depth == 0:
+            for node in nodes[depth]:
+                newTraj = TrajAgainstTheMachine([node])
+
+                newTraj.eval_weight()
+                results.append(newTraj)
+
+            return helper(depth+1, results)
+
+        elif depth != len(nodes):
+            res2 = []
+            for node in nodes[depth]:
+                for i in results:
+                    newTraj: TrajAgainstTheMachine = i.add_point([node])
+                    newTraj.eval_weight()
+                    res2.append(newTraj)
+            results = copy.deepcopy(res2)
+            return helper(depth+1, results)
+
+        else: return results
+    ah = helper(0, results)
+    ah.sort()
+
+
+def best_first_search(nodes):
+    pass
+    
 
 class Range:
     def __init__(self, min: float, max: float, weight: float):
@@ -84,13 +143,22 @@ def getBestSolution(
             tup = tuple(pairsIndices[j].tolist())
             costs[(i, i + 1)][tup] = float(angleCost[j])
 
+    '''
     import ipdb
 
     ipdb.set_trace()
+    '''
 
     return best_combination
 
 
-getBestSolution(
+'''getBestSolution(
     [sol_pos_1, sol_pos_2, sol_pos_3], JointsPreferedRange({}), {0: 1.0, 6: 0.5}
-)
+)'''
+
+sols = []
+
+for i in range(10):
+    sols.append([[1,2,1],[3,1,1],[3,1,2]])
+print(sols)
+naive_search(sols)
