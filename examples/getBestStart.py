@@ -62,7 +62,7 @@ sol_pos_6 = [
 ur3e_arm = ur_kinematics.URKinematics("ur3e")
 
 # Class to store a full trajectory
-class TrajAgainstTheMachine:
+class TrajectoryClass:
     trajectory: list[list[float]] = []
     weight: float = 0.0
 
@@ -81,12 +81,12 @@ class TrajAgainstTheMachine:
             self.weight += i[2]
 
     def add_point(self, pos: list[float]):
-        return TrajAgainstTheMachine(self.trajectory + (pos))
+        return TrajectoryClass(self.trajectory + (pos))
 
 
 # Function which lets us delete trajectories that are suboptimal
 # If two path lead to the same joint state, the one with less cost is ALWAYS better (at that point)
-def kill_traj(traj: list[TrajAgainstTheMachine]):
+def kill_traj(traj: list[TrajectoryClass]):
     last_pos = []
     weight_pos = []
     best_trajs = []
@@ -105,11 +105,11 @@ def kill_traj(traj: list[TrajAgainstTheMachine]):
     return best_trajs
 
 def naive_search(nodes: np.ndarray[np.ndarray[float]]):
-    results: list[TrajAgainstTheMachine]= []
-    def helper(depth: int, results: list[TrajAgainstTheMachine]):
+    results: list[TrajectoryClass]= []
+    def helper(depth: int, results: list[TrajectoryClass]):
         if depth == 0:
             for node in nodes[depth]:
-                newTraj = TrajAgainstTheMachine([node])
+                newTraj = TrajectoryClass([node])
                 newTraj.eval_weight()
                 results.append(newTraj)
 
@@ -119,7 +119,7 @@ def naive_search(nodes: np.ndarray[np.ndarray[float]]):
             res2 = []
             for node in nodes[depth]:
                 for i in results:
-                    newTraj: TrajAgainstTheMachine = i.add_point([node])
+                    newTraj: TrajectoryClass = i.add_point([node])
                     newTraj.eval_weight()
                     res2.append(newTraj)
             results = copy.deepcopy(res2)
@@ -135,7 +135,7 @@ def best_first_search(nodes):
     # Compute all possibilites for node 0 to node 1
     for i in nodes[0]:
         for j in nodes[1]:
-            trajectories.append(TrajAgainstTheMachine([i, j]))
+            trajectories.append(TrajectoryClass([i, j]))
     # Dont explore suboptimal paths
     trajectories = kill_traj(trajectories)
     trajectories.sort() # Sorting so best solution is always to the start
@@ -144,7 +144,7 @@ def best_first_search(nodes):
             # Compute possibilities for next nodes, only on best path so far
             newTraj = copy.deepcopy(trajectories[0].trajectory)
             newTraj.append(i)
-            trajectories.append(TrajAgainstTheMachine(newTraj))
+            trajectories.append(TrajectoryClass(newTraj))
         # Replace the best path with the new path
         trajectories.pop(0)
         trajectories = kill_traj(trajectories)
