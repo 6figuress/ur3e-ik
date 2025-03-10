@@ -2,7 +2,7 @@ import numpy as np
 from ur_ikfast import ur_kinematics
 from itertools import combinations, product
 import copy
-import heapq
+import time
 
 
 sol_pos_1 = [
@@ -84,6 +84,8 @@ class TrajAgainstTheMachine:
         return TrajAgainstTheMachine(self.trajectory + (pos))
 
 
+# Function which lets us delete trajectories that are suboptimal
+# If two path lead to the same joint state, the one with less cost is ALWAYS better (at that point)
 def kill_traj(traj: list[TrajAgainstTheMachine]):
     last_pos = []
     weight_pos = []
@@ -126,6 +128,7 @@ def naive_search(nodes: np.ndarray[np.ndarray[float]]):
         else: return results
     ah = helper(0, results)
     ah.sort()
+    return ah[0]
 
 def best_first_search(nodes):
     trajectories = []
@@ -136,22 +139,37 @@ def best_first_search(nodes):
     # Dont explore suboptimal paths
     trajectories = kill_traj(trajectories)
     trajectories.sort() # Sorting so best solution is always to the start
-    for i in trajectories:
-            print(i)
     while len(trajectories[0].trajectory) < len(nodes):
-        print("depth: " + str(len(trajectories[0].trajectory)))
         for i in nodes[len(trajectories[0].trajectory)]:
+            # Compute possibilities for next nodes, only on best path so far
             newTraj = copy.deepcopy(trajectories[0].trajectory)
             newTraj.append(i)
             trajectories.append(TrajAgainstTheMachine(newTraj))
-            
+        # Replace the best path with the new path
         trajectories.pop(0)
         trajectories = kill_traj(trajectories)
-        for i in trajectories:
-            print(i)
         trajectories.sort() # Sorting so best solution is always to the start
+    return trajectories[0]
 
-    
+def benchmark():
+    sols = []
+
+    sols.append(sol_pos_1)
+    sols.append(sol_pos_2)
+    sols.append(sol_pos_3)
+    sols.append(sol_pos_4)
+    sols.append(sol_pos_5)
+    sols.append(sol_pos_6)
+
+    t = time.time()
+    res = naive_search(sols)
+    print(f"Time for naive search: {(time.time() - t)* 1000}ms")
+    print(res)
+    t = time.time()
+    res = best_first_search(sols)
+    print(f"Time for best first search: {(time.time() - t)* 1000}ms")
+    print(res)
+
 
 class Range:
     def __init__(self, min: float, max: float, weight: float):
@@ -224,15 +242,4 @@ def getBestSolution(
     [sol_pos_1, sol_pos_2, sol_pos_3], JointsPreferedRange({}), {0: 1.0, 6: 0.5}
 )'''
 
-sols = []
-
-
-sols.append(sol_pos_1)
-sols.append(sol_pos_2)
-sols.append(sol_pos_3)
-sols.append(sol_pos_4)
-sols.append(sol_pos_5)
-sols.append(sol_pos_6)
-
-print("launch")
-best_first_search(sols)
+benchmark()
