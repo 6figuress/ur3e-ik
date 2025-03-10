@@ -2,27 +2,54 @@ import numpy as np
 from ur_ikfast import ur_kinematics
 from itertools import combinations, product
 import copy
+import heapq
 
 
 sol_pos_1 = [
-    [1, 50, 100],
-    [1, 75, 100],
+    [2, 40, 110],
+    [2, 60, 120],
+    [2, 15, 45],
+    [7, 80, 90],
+    [3, 22, 55],
+    [9, 45, 78],
 ]
 sol_pos_2 = [
-    [4, 25, 90],
-    [4, 0, 90],
+    [6, 20, 95],
+    [6, 5, 88],
+    [6, 8, 82],
+    [6, 10, 75],
+    [6, 3, 78],
+    [7, 12, 85],
 ]
 sol_pos_3 = [
-    [5, 30, 89],
-    [5, 1, 90],
+    [9, 35, 79],
+    [9, 2, 85],
+    [8, 18, 92],
+    [7, 24, 88],
+    [10, 10, 90],
 ]
 sol_pos_4 = [
-    [5, 30, 89],
-    [5, 1, 90],
+    [11, 32, 50],
+    [9, 6, 60],
+    [12, 14, 65],
+    [10, 8, 70],
+    [13, 11, 75],
+    [14, 9, 80],
 ]
 sol_pos_5 = [
-    [5, 30, 89],
-    [5, 1, 90],
+    [10, 11, 1500],
+    [10, 14, 1510],
+    [11, 20, 1525],
+    [12, 18, 1535],
+    [14, 15, 1540],
+]
+sol_pos_6 = [
+    [60, 25, 2500],
+    [18, 2, 2600],
+    [19, 5, 2650],
+    [20, 7, 2700],
+    [21, 9, 2750],
+    [22, 12, 2800],
 ]
 
 
@@ -44,6 +71,9 @@ class TrajAgainstTheMachine:
 
     def __lt__(self, other):
          return self.weight < other.weight
+    
+    def __str__(self):
+       return f"Trajectory: {str(self.trajectory)}, Weight: {str(self.weight)}"
 
     def eval_weight(self):
         self.weight = 0
@@ -54,13 +84,30 @@ class TrajAgainstTheMachine:
         return TrajAgainstTheMachine(self.trajectory + (pos))
 
 
+def kill_traj(traj: list[TrajAgainstTheMachine]):
+    last_pos = []
+    weight_pos = []
+    best_trajs = []
+    for i in traj:
+        i.eval_weight()
+        if i.trajectory[-1] not in last_pos:
+            last_pos.append(i.trajectory[-1])
+            weight_pos.append(i.weight)
+            best_trajs.append(i)
+        else:
+            at = last_pos.index(i.trajectory[-1])
+            if weight_pos[at] > i.weight:
+                weight_pos[at] = i.weight
+                best_trajs[at] = i
+
+    return best_trajs
+
 def naive_search(nodes: np.ndarray[np.ndarray[float]]):
     results: list[TrajAgainstTheMachine]= []
     def helper(depth: int, results: list[TrajAgainstTheMachine]):
         if depth == 0:
             for node in nodes[depth]:
                 newTraj = TrajAgainstTheMachine([node])
-
                 newTraj.eval_weight()
                 results.append(newTraj)
 
@@ -80,9 +127,30 @@ def naive_search(nodes: np.ndarray[np.ndarray[float]]):
     ah = helper(0, results)
     ah.sort()
 
-
 def best_first_search(nodes):
-    pass
+    trajectories = []
+    # Compute all possibilites for node 0 to node 1
+    for i in nodes[0]:
+        for j in nodes[1]:
+            trajectories.append(TrajAgainstTheMachine([i, j]))
+    # Dont explore suboptimal paths
+    trajectories = kill_traj(trajectories)
+    trajectories.sort() # Sorting so best solution is always to the start
+    for i in trajectories:
+            print(i)
+    while len(trajectories[0].trajectory) < len(nodes):
+        print("depth: " + str(len(trajectories[0].trajectory)))
+        for i in nodes[len(trajectories[0].trajectory)]:
+            newTraj = copy.deepcopy(trajectories[0].trajectory)
+            newTraj.append(i)
+            trajectories.append(TrajAgainstTheMachine(newTraj))
+            
+        trajectories.pop(0)
+        trajectories = kill_traj(trajectories)
+        for i in trajectories:
+            print(i)
+        trajectories.sort() # Sorting so best solution is always to the start
+
     
 
 class Range:
@@ -158,7 +226,13 @@ def getBestSolution(
 
 sols = []
 
-for i in range(10):
-    sols.append([[1,2,1],[3,1,1],[3,1,2]])
-print(sols)
-naive_search(sols)
+
+sols.append(sol_pos_1)
+sols.append(sol_pos_2)
+sols.append(sol_pos_3)
+sols.append(sol_pos_4)
+sols.append(sol_pos_5)
+sols.append(sol_pos_6)
+
+print("launch")
+best_first_search(sols)
