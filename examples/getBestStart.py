@@ -6,8 +6,8 @@ import time
 
 
 sol_pos_1 = [
-    [2, 40, 110],
-    [2, 60, 120],
+    [2, 40, 55],
+    [2, 60, 65],
     [2, 15, 45],
     [7, 80, 90],
     [3, 22, 55],
@@ -37,21 +37,23 @@ sol_pos_4 = [
     [14, 9, 80],
 ]
 sol_pos_5 = [
-    [10, 11, 1500],
-    [10, 14, 1510],
-    [11, 20, 1525],
-    [12, 18, 1535],
-    [14, 15, 1540],
+    [10, 11, 45],
+    [10, 14, 44],
+    [11, 20, 52],
+    [12, 18, 25],
+    [14, 15, 71],
 ]
 sol_pos_6 = [
-    [60, 25, 2500],
-    [18, 2, 2600],
-    [19, 5, 2650],
-    [20, 7, 2700],
-    [21, 9, 2750],
-    [22, 12, 2800],
+    [60, 25, 16],
+    [18, 2, 15],
+    [19, 5, 20],
+    [20, 7, 75],
+    [21, 9, 42],
+    [22, 12, 34],
 ]
 
+#default joint weights
+JOINT_WEIGHT_ARR = [1,1,1,1,1,1]
 
 # A position is an array with 6 (rad) angles, corresponding to each joint
 
@@ -66,8 +68,9 @@ class TrajectoryClass:
     trajectory: list[list[float]] = []
     weight: float = 0.0
 
-    def __init__(self, traj: list[list[float]]):
+    def __init__(self, traj: list[list[float]], joint_weights = JOINT_WEIGHT_ARR):
         self.trajectory = traj
+        self.joint_weights = joint_weights
 
     def __lt__(self, other):
          return self.weight < other.weight
@@ -77,8 +80,10 @@ class TrajectoryClass:
 
     def eval_weight(self):
         self.weight = 0
-        for i in self.trajectory:
-            self.weight += i[2]
+        if len(self.trajectory) > 1:
+            for i in range(len(self.trajectory)-1):
+                for j in range(len(self.trajectory[i])):
+                    self.weight += abs(self.trajectory[i][j] - self.trajectory[i+1][j]) * self.joint_weights[j]
 
     def add_point(self, pos: list[float]):
         return TrajectoryClass(self.trajectory + (pos))
@@ -87,22 +92,16 @@ class TrajectoryClass:
 # Function which lets us delete trajectories that are suboptimal
 # If two path lead to the same joint state, the one with less cost is ALWAYS better (at that point)
 def kill_traj(traj: list[TrajectoryClass]):
-    last_pos = []
-    weight_pos = []
-    best_trajs = []
+    best_trajs = {}
+    
     for i in traj:
         i.eval_weight()
-        if i.trajectory[-1] not in last_pos:
-            last_pos.append(i.trajectory[-1])
-            weight_pos.append(i.weight)
-            best_trajs.append(i)
-        else:
-            at = last_pos.index(i.trajectory[-1])
-            if weight_pos[at] > i.weight:
-                weight_pos[at] = i.weight
-                best_trajs[at] = i
-
-    return best_trajs
+        last_position = tuple(i.trajectory[-1])  # Ensure it's hashable
+        
+        if last_position not in best_trajs or best_trajs[last_position].weight > i.weight:
+            best_trajs[last_position] = i  # Keep the trajectory with the lowest weight
+    
+    return list(best_trajs.values())
 
 def naive_search(nodes: np.ndarray[np.ndarray[float]]):
     results: list[TrajectoryClass]= []
@@ -112,7 +111,6 @@ def naive_search(nodes: np.ndarray[np.ndarray[float]]):
                 newTraj = TrajectoryClass([node])
                 newTraj.eval_weight()
                 results.append(newTraj)
-
             return helper(depth+1, results)
 
         elif depth != len(nodes):
@@ -207,7 +205,7 @@ def filterSolutions(
     return accepted
 
 
-def getBestSolution(
+'''def getBestSolution(
     solutions: np.ndarray[np.ndarray[np.ndarray[float]]],
     preferedRange: JointsPreferedRange,
     jointWeight: dict[int, float],
@@ -229,16 +227,16 @@ def getBestSolution(
             tup = tuple(pairsIndices[j].tolist())
             costs[(i, i + 1)][tup] = float(angleCost[j])
 
-    '''
+    
     import ipdb
 
     ipdb.set_trace()
-    '''
+    
 
     return best_combination
 
 
-'''getBestSolution(
+getBestSolution(
     [sol_pos_1, sol_pos_2, sol_pos_3], JointsPreferedRange({}), {0: 1.0, 6: 0.5}
 )'''
 
