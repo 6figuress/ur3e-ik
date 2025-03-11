@@ -73,6 +73,7 @@ class TrajectoryClass:
         self.joint_weights = joint_weights
 
     def __lt__(self, other):
+         #This is useful to help sorting the trajectories by weight
          return self.weight < other.weight
     
     def __str__(self):
@@ -80,6 +81,7 @@ class TrajectoryClass:
 
     def eval_weight(self):
         self.weight = 0
+        # Computes the weight of the trajectory
         if len(self.trajectory) > 1:
             for i in range(len(self.trajectory)-1):
                 for j in range(len(self.trajectory[i])):
