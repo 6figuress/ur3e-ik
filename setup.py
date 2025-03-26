@@ -16,9 +16,27 @@ setup(
     packages=find_packages(),
     ext_modules=cythonize(
         [
-            Extension(
+			Extension(
                 "ur3e_ikfast",
                 ["ur3e/ur3e_ikfast.pyx", "ur3e/ikfast_wrapper.cpp"],
+                language="c++",
+                libraries=["lapack"],
+            ),
+			Extension(
+                "ur3e_pen_21_ikfast",
+                ["ur3e_pen_21/ur3e_pen_ikfast.pyx", "ur3e_pen_21/ikfast_wrapper.cpp"],
+                language="c++",
+                libraries=["lapack"],
+            ),
+			Extension(
+                "ur3e_pen_150_ikfast",
+                ["ur3e_pen_150/ur3e_pen_ikfast.pyx", "ur3e_pen_150/ikfast_wrapper.cpp"],
+                language="c++",
+                libraries=["lapack"],
+            ),
+			Extension(
+                "ur3e_pen_165_ikfast",
+                ["ur3e_pen_165/ur3e_pen_ikfast.pyx", "ur3e_pen_165/ikfast_wrapper.cpp"],
                 language="c++",
                 libraries=["lapack"],
             ),

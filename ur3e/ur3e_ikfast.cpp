@@ -13,13 +13,13 @@
         "libraries": [
             "lapack"
         ],
-        "name": "ur3e.ur3e_ikfast",
+        "name": "ur3e_ikfast",
         "sources": [
             "ur3e/ur3e_ikfast.pyx",
             "ur3e/ikfast_wrapper.cpp"
         ]
     },
-    "module_name": "ur3e.ur3e_ikfast"
+    "module_name": "ur3e_ikfast"
 }
 END: Cython Metadata */
 
@@ -1251,8 +1251,8 @@ static CYTHON_INLINE float __PYX_NAN() {
     #define __PYX_EXTERN_C extern "C++"
 #endif
 
-#define __PYX_HAVE__ur3e__ur3e_ikfast
-#define __PYX_HAVE_API__ur3e__ur3e_ikfast
+#define __PYX_HAVE__ur3e_ikfast
+#define __PYX_HAVE_API__ur3e_ikfast
 /* Early includes */
 #include <vector>
 #include "../include/Kinematics.hpp"
@@ -1522,16 +1522,16 @@ static const char *__pyx_f[] = {
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics;
+struct __pyx_obj_11ur3e_ikfast_PyKinematics;
 
-/* "ur3e/ur3e_ikfast.pyx":27
+/* "ur3e_ikfast.pyx":27
  *         vector[float] inverse(vector[float] ee_pose);
  * 
  * cdef class PyKinematics:             # <<<<<<<<<<<<<<
  *     cdef Kinematics *thisptr      # hold a C++ instance which we're wrapping
  *     def __cinit__(self):
  */
-struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics {
+struct __pyx_obj_11ur3e_ikfast_PyKinematics {
   PyObject_HEAD
   robots::Kinematics *thisptr;
 };
@@ -2163,16 +2163,16 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* #### Code section: module_declarations ### */
 
-/* Module declarations from "ur3e.ur3e_ikfast" */
+/* Module declarations from "ur3e_ikfast" */
 static std::vector<float>  __pyx_convert_vector_from_py_float(PyObject *); /*proto*/
 static PyObject *__pyx_convert_vector_to_py_float(std::vector<float>  const &); /*proto*/
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "ur3e.ur3e_ikfast"
-extern int __pyx_module_is_main_ur3e__ur3e_ikfast;
-int __pyx_module_is_main_ur3e__ur3e_ikfast = 0;
+#define __Pyx_MODULE_NAME "ur3e_ikfast"
+extern int __pyx_module_is_main_ur3e_ikfast;
+int __pyx_module_is_main_ur3e_ikfast = 0;
 
-/* Implementation of "ur3e.ur3e_ikfast" */
+/* Implementation of "ur3e_ikfast" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin_MemoryError;
@@ -2199,13 +2199,13 @@ static const char __pyx_k_isenabled[] = "isenabled";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_MemoryError[] = "MemoryError";
+static const char __pyx_k_ur3e_ikfast[] = "ur3e_ikfast";
 static const char __pyx_k_PyKinematics[] = "PyKinematics";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_joint_config[] = "joint_config";
 static const char __pyx_k_stringsource[] = "<stringsource>";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
-static const char __pyx_k_ur3e_ur3e_ikfast[] = "ur3e.ur3e_ikfast";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_PyKinematics_getDOF[] = "PyKinematics.getDOF";
@@ -2216,14 +2216,14 @@ static const char __pyx_k_PyKinematics___reduce_cython[] = "PyKinematics.__reduc
 static const char __pyx_k_PyKinematics___setstate_cython[] = "PyKinematics.__setstate_cython__";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 /* #### Code section: decls ### */
-static int __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics___cinit__(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self); /* proto */
-static void __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_2__dealloc__(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_4getDOF(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_6forward(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self, std::vector<float>  __pyx_v_joint_config); /* proto */
-static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_8inverse(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self, std::vector<float>  __pyx_v_ee_pose); /* proto */
-static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_4ur3e_11ur3e_ikfast_PyKinematics(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_11ur3e_ikfast_12PyKinematics___cinit__(struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self); /* proto */
+static void __pyx_pf_11ur3e_ikfast_12PyKinematics_2__dealloc__(struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11ur3e_ikfast_12PyKinematics_4getDOF(struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11ur3e_ikfast_12PyKinematics_6forward(struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self, std::vector<float>  __pyx_v_joint_config); /* proto */
+static PyObject *__pyx_pf_11ur3e_ikfast_12PyKinematics_8inverse(struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self, std::vector<float>  __pyx_v_ee_pose); /* proto */
+static PyObject *__pyx_pf_11ur3e_ikfast_12PyKinematics_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11ur3e_ikfast_12PyKinematics_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_11ur3e_ikfast_PyKinematics(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 typedef struct {
@@ -2252,9 +2252,9 @@ typedef struct {
   PyTypeObject *__pyx_CoroutineType;
   #endif
   #if CYTHON_USE_MODULE_STATE
-  PyObject *__pyx_type_4ur3e_11ur3e_ikfast_PyKinematics;
+  PyObject *__pyx_type_11ur3e_ikfast_PyKinematics;
   #endif
-  PyTypeObject *__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics;
+  PyTypeObject *__pyx_ptype_11ur3e_ikfast_PyKinematics;
   PyObject *__pyx_n_s_MemoryError;
   PyObject *__pyx_n_s_PyKinematics;
   PyObject *__pyx_n_s_PyKinematics___reduce_cython;
@@ -2290,7 +2290,7 @@ typedef struct {
   PyObject *__pyx_n_s_setstate_cython;
   PyObject *__pyx_kp_s_stringsource;
   PyObject *__pyx_n_s_test;
-  PyObject *__pyx_n_s_ur3e_ur3e_ikfast;
+  PyObject *__pyx_n_s_ur3e_ikfast;
   PyObject *__pyx_kp_s_ur3e_ur3e_ikfast_pyx;
   PyObject *__pyx_tuple_;
   PyObject *__pyx_tuple__3;
@@ -2343,8 +2343,8 @@ static int __pyx_m_clear(PyObject *m) {
   #ifdef __Pyx_FusedFunction_USED
   Py_CLEAR(clear_module_state->__pyx_FusedFunctionType);
   #endif
-  Py_CLEAR(clear_module_state->__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics);
-  Py_CLEAR(clear_module_state->__pyx_type_4ur3e_11ur3e_ikfast_PyKinematics);
+  Py_CLEAR(clear_module_state->__pyx_ptype_11ur3e_ikfast_PyKinematics);
+  Py_CLEAR(clear_module_state->__pyx_type_11ur3e_ikfast_PyKinematics);
   Py_CLEAR(clear_module_state->__pyx_n_s_MemoryError);
   Py_CLEAR(clear_module_state->__pyx_n_s_PyKinematics);
   Py_CLEAR(clear_module_state->__pyx_n_s_PyKinematics___reduce_cython);
@@ -2380,7 +2380,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_setstate_cython);
   Py_CLEAR(clear_module_state->__pyx_kp_s_stringsource);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
-  Py_CLEAR(clear_module_state->__pyx_n_s_ur3e_ur3e_ikfast);
+  Py_CLEAR(clear_module_state->__pyx_n_s_ur3e_ikfast);
   Py_CLEAR(clear_module_state->__pyx_kp_s_ur3e_ur3e_ikfast_pyx);
   Py_CLEAR(clear_module_state->__pyx_tuple_);
   Py_CLEAR(clear_module_state->__pyx_tuple__3);
@@ -2411,8 +2411,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   #ifdef __Pyx_FusedFunction_USED
   Py_VISIT(traverse_module_state->__pyx_FusedFunctionType);
   #endif
-  Py_VISIT(traverse_module_state->__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics);
-  Py_VISIT(traverse_module_state->__pyx_type_4ur3e_11ur3e_ikfast_PyKinematics);
+  Py_VISIT(traverse_module_state->__pyx_ptype_11ur3e_ikfast_PyKinematics);
+  Py_VISIT(traverse_module_state->__pyx_type_11ur3e_ikfast_PyKinematics);
   Py_VISIT(traverse_module_state->__pyx_n_s_MemoryError);
   Py_VISIT(traverse_module_state->__pyx_n_s_PyKinematics);
   Py_VISIT(traverse_module_state->__pyx_n_s_PyKinematics___reduce_cython);
@@ -2448,7 +2448,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_setstate_cython);
   Py_VISIT(traverse_module_state->__pyx_kp_s_stringsource);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
-  Py_VISIT(traverse_module_state->__pyx_n_s_ur3e_ur3e_ikfast);
+  Py_VISIT(traverse_module_state->__pyx_n_s_ur3e_ikfast);
   Py_VISIT(traverse_module_state->__pyx_kp_s_ur3e_ur3e_ikfast_pyx);
   Py_VISIT(traverse_module_state->__pyx_tuple_);
   Py_VISIT(traverse_module_state->__pyx_tuple__3);
@@ -2488,9 +2488,9 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_CoroutineType __pyx_mstate_global->__pyx_CoroutineType
 #endif
 #if CYTHON_USE_MODULE_STATE
-#define __pyx_type_4ur3e_11ur3e_ikfast_PyKinematics __pyx_mstate_global->__pyx_type_4ur3e_11ur3e_ikfast_PyKinematics
+#define __pyx_type_11ur3e_ikfast_PyKinematics __pyx_mstate_global->__pyx_type_11ur3e_ikfast_PyKinematics
 #endif
-#define __pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics __pyx_mstate_global->__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics
+#define __pyx_ptype_11ur3e_ikfast_PyKinematics __pyx_mstate_global->__pyx_ptype_11ur3e_ikfast_PyKinematics
 #define __pyx_n_s_MemoryError __pyx_mstate_global->__pyx_n_s_MemoryError
 #define __pyx_n_s_PyKinematics __pyx_mstate_global->__pyx_n_s_PyKinematics
 #define __pyx_n_s_PyKinematics___reduce_cython __pyx_mstate_global->__pyx_n_s_PyKinematics___reduce_cython
@@ -2526,7 +2526,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_setstate_cython __pyx_mstate_global->__pyx_n_s_setstate_cython
 #define __pyx_kp_s_stringsource __pyx_mstate_global->__pyx_kp_s_stringsource
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
-#define __pyx_n_s_ur3e_ur3e_ikfast __pyx_mstate_global->__pyx_n_s_ur3e_ur3e_ikfast
+#define __pyx_n_s_ur3e_ikfast __pyx_mstate_global->__pyx_n_s_ur3e_ikfast
 #define __pyx_kp_s_ur3e_ur3e_ikfast_pyx __pyx_mstate_global->__pyx_kp_s_ur3e_ur3e_ikfast_pyx
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
 #define __pyx_tuple__3 __pyx_mstate_global->__pyx_tuple__3
@@ -2828,7 +2828,7 @@ static PyObject *__pyx_convert_vector_to_py_float(std::vector<float>  const &__p
   return __pyx_r;
 }
 
-/* "ur3e/ur3e_ikfast.pyx":29
+/* "ur3e_ikfast.pyx":29
  * cdef class PyKinematics:
  *     cdef Kinematics *thisptr      # hold a C++ instance which we're wrapping
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -2837,8 +2837,8 @@ static PyObject *__pyx_convert_vector_to_py_float(std::vector<float>  const &__p
  */
 
 /* Python wrapper */
-static int __pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_11ur3e_ikfast_12PyKinematics_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_11ur3e_ikfast_12PyKinematics_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
@@ -2853,17 +2853,17 @@ static int __pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_1__cinit__(PyObject *__py
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 0, 0, __pyx_nargs); return -1;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_VARARGS(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__cinit__", 0))) return -1;
-  __pyx_r = __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics___cinit__(((struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11ur3e_ikfast_12PyKinematics___cinit__(((struct __pyx_obj_11ur3e_ikfast_PyKinematics *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics___cinit__(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self) {
+static int __pyx_pf_11ur3e_ikfast_12PyKinematics___cinit__(struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self) {
   int __pyx_r;
 
-  /* "ur3e/ur3e_ikfast.pyx":30
+  /* "ur3e_ikfast.pyx":30
  *     cdef Kinematics *thisptr      # hold a C++ instance which we're wrapping
  *     def __cinit__(self):
  *         self.thisptr = new Kinematics()             # <<<<<<<<<<<<<<
@@ -2872,7 +2872,7 @@ static int __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics___cinit__(struct __pyx_ob
  */
   __pyx_v_self->thisptr = new robots::Kinematics();
 
-  /* "ur3e/ur3e_ikfast.pyx":29
+  /* "ur3e_ikfast.pyx":29
  * cdef class PyKinematics:
  *     cdef Kinematics *thisptr      # hold a C++ instance which we're wrapping
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -2885,7 +2885,7 @@ static int __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics___cinit__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "ur3e/ur3e_ikfast.pyx":31
+/* "ur3e_ikfast.pyx":31
  *     def __cinit__(self):
  *         self.thisptr = new Kinematics()
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2894,21 +2894,21 @@ static int __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics___cinit__(struct __pyx_ob
  */
 
 /* Python wrapper */
-static void __pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
-static void __pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_3__dealloc__(PyObject *__pyx_v_self) {
+static void __pyx_pw_11ur3e_ikfast_12PyKinematics_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_11ur3e_ikfast_12PyKinematics_3__dealloc__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_2__dealloc__(((struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *)__pyx_v_self));
+  __pyx_pf_11ur3e_ikfast_12PyKinematics_2__dealloc__(((struct __pyx_obj_11ur3e_ikfast_PyKinematics *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
 }
 
-static void __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_2__dealloc__(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self) {
+static void __pyx_pf_11ur3e_ikfast_12PyKinematics_2__dealloc__(struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self) {
 
-  /* "ur3e/ur3e_ikfast.pyx":32
+  /* "ur3e_ikfast.pyx":32
  *         self.thisptr = new Kinematics()
  *     def __dealloc__(self):
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -2917,7 +2917,7 @@ static void __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_2__dealloc__(struct __py
  */
   delete __pyx_v_self->thisptr;
 
-  /* "ur3e/ur3e_ikfast.pyx":31
+  /* "ur3e_ikfast.pyx":31
  *     def __cinit__(self):
  *         self.thisptr = new Kinematics()
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2928,7 +2928,7 @@ static void __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_2__dealloc__(struct __py
   /* function exit code */
 }
 
-/* "ur3e/ur3e_ikfast.pyx":33
+/* "ur3e_ikfast.pyx":33
  *     def __dealloc__(self):
  *         del self.thisptr
  *     def getDOF(self):             # <<<<<<<<<<<<<<
@@ -2937,15 +2937,15 @@ static void __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_2__dealloc__(struct __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_5getDOF(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11ur3e_ikfast_12PyKinematics_5getDOF(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4ur3e_11ur3e_ikfast_12PyKinematics_5getDOF = {"getDOF", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_5getDOF, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_5getDOF(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11ur3e_ikfast_12PyKinematics_5getDOF = {"getDOF", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11ur3e_ikfast_12PyKinematics_5getDOF, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11ur3e_ikfast_12PyKinematics_5getDOF(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2970,14 +2970,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("getDOF", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "getDOF", 0))) return NULL;
-  __pyx_r = __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_4getDOF(((struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11ur3e_ikfast_12PyKinematics_4getDOF(((struct __pyx_obj_11ur3e_ikfast_PyKinematics *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_4getDOF(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self) {
+static PyObject *__pyx_pf_11ur3e_ikfast_12PyKinematics_4getDOF(struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2986,7 +2986,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_4getDOF(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("getDOF", 1);
 
-  /* "ur3e/ur3e_ikfast.pyx":34
+  /* "ur3e_ikfast.pyx":34
  *         del self.thisptr
  *     def getDOF(self):
  *         return self.thisptr.num_of_joints             # <<<<<<<<<<<<<<
@@ -3000,7 +3000,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_4getDOF(struct __py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "ur3e/ur3e_ikfast.pyx":33
+  /* "ur3e_ikfast.pyx":33
  *     def __dealloc__(self):
  *         del self.thisptr
  *     def getDOF(self):             # <<<<<<<<<<<<<<
@@ -3011,7 +3011,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_4getDOF(struct __py
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ur3e.ur3e_ikfast.PyKinematics.getDOF", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ur3e_ikfast.PyKinematics.getDOF", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3019,7 +3019,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_4getDOF(struct __py
   return __pyx_r;
 }
 
-/* "ur3e/ur3e_ikfast.pyx":35
+/* "ur3e_ikfast.pyx":35
  *     def getDOF(self):
  *         return self.thisptr.num_of_joints
  *     def forward(self,vector[float] joint_config):             # <<<<<<<<<<<<<<
@@ -3028,15 +3028,15 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_4getDOF(struct __py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_7forward(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11ur3e_ikfast_12PyKinematics_7forward(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4ur3e_11ur3e_ikfast_12PyKinematics_7forward = {"forward", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_7forward, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_7forward(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11ur3e_ikfast_12PyKinematics_7forward = {"forward", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11ur3e_ikfast_12PyKinematics_7forward, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11ur3e_ikfast_12PyKinematics_7forward(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3106,11 +3106,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("ur3e.ur3e_ikfast.PyKinematics.forward", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ur3e_ikfast.PyKinematics.forward", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_6forward(((struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *)__pyx_v_self), __PYX_STD_MOVE_IF_SUPPORTED(__pyx_v_joint_config));
+  __pyx_r = __pyx_pf_11ur3e_ikfast_12PyKinematics_6forward(((struct __pyx_obj_11ur3e_ikfast_PyKinematics *)__pyx_v_self), __PYX_STD_MOVE_IF_SUPPORTED(__pyx_v_joint_config));
 
   /* function exit code */
   {
@@ -3123,7 +3123,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_6forward(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self, std::vector<float>  __pyx_v_joint_config) {
+static PyObject *__pyx_pf_11ur3e_ikfast_12PyKinematics_6forward(struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self, std::vector<float>  __pyx_v_joint_config) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3132,7 +3132,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_6forward(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("forward", 1);
 
-  /* "ur3e/ur3e_ikfast.pyx":36
+  /* "ur3e_ikfast.pyx":36
  *         return self.thisptr.num_of_joints
  *     def forward(self,vector[float] joint_config):
  *         return self.thisptr.forward(joint_config)             # <<<<<<<<<<<<<<
@@ -3146,7 +3146,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_6forward(struct __p
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "ur3e/ur3e_ikfast.pyx":35
+  /* "ur3e_ikfast.pyx":35
  *     def getDOF(self):
  *         return self.thisptr.num_of_joints
  *     def forward(self,vector[float] joint_config):             # <<<<<<<<<<<<<<
@@ -3157,7 +3157,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_6forward(struct __p
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ur3e.ur3e_ikfast.PyKinematics.forward", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ur3e_ikfast.PyKinematics.forward", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3165,7 +3165,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_6forward(struct __p
   return __pyx_r;
 }
 
-/* "ur3e/ur3e_ikfast.pyx":37
+/* "ur3e_ikfast.pyx":37
  *     def forward(self,vector[float] joint_config):
  *         return self.thisptr.forward(joint_config)
  *     def inverse(self,vector[float] ee_pose):             # <<<<<<<<<<<<<<
@@ -3173,15 +3173,15 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_6forward(struct __p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_9inverse(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11ur3e_ikfast_12PyKinematics_9inverse(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4ur3e_11ur3e_ikfast_12PyKinematics_9inverse = {"inverse", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_9inverse, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_9inverse(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11ur3e_ikfast_12PyKinematics_9inverse = {"inverse", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11ur3e_ikfast_12PyKinematics_9inverse, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11ur3e_ikfast_12PyKinematics_9inverse(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3251,11 +3251,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("ur3e.ur3e_ikfast.PyKinematics.inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ur3e_ikfast.PyKinematics.inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_8inverse(((struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *)__pyx_v_self), __PYX_STD_MOVE_IF_SUPPORTED(__pyx_v_ee_pose));
+  __pyx_r = __pyx_pf_11ur3e_ikfast_12PyKinematics_8inverse(((struct __pyx_obj_11ur3e_ikfast_PyKinematics *)__pyx_v_self), __PYX_STD_MOVE_IF_SUPPORTED(__pyx_v_ee_pose));
 
   /* function exit code */
   {
@@ -3268,7 +3268,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_8inverse(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self, std::vector<float>  __pyx_v_ee_pose) {
+static PyObject *__pyx_pf_11ur3e_ikfast_12PyKinematics_8inverse(struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self, std::vector<float>  __pyx_v_ee_pose) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3277,7 +3277,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_8inverse(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("inverse", 1);
 
-  /* "ur3e/ur3e_ikfast.pyx":38
+  /* "ur3e_ikfast.pyx":38
  *         return self.thisptr.forward(joint_config)
  *     def inverse(self,vector[float] ee_pose):
  *         return self.thisptr.inverse(ee_pose)             # <<<<<<<<<<<<<<
@@ -3289,7 +3289,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_8inverse(struct __p
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "ur3e/ur3e_ikfast.pyx":37
+  /* "ur3e_ikfast.pyx":37
  *     def forward(self,vector[float] joint_config):
  *         return self.thisptr.forward(joint_config)
  *     def inverse(self,vector[float] ee_pose):             # <<<<<<<<<<<<<<
@@ -3299,7 +3299,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_8inverse(struct __p
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("ur3e.ur3e_ikfast.PyKinematics.inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ur3e_ikfast.PyKinematics.inverse", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3314,15 +3314,15 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_8inverse(struct __p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_11__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11ur3e_ikfast_12PyKinematics_11__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4ur3e_11ur3e_ikfast_12PyKinematics_11__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_11__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_11__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11ur3e_ikfast_12PyKinematics_11__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11ur3e_ikfast_12PyKinematics_11__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11ur3e_ikfast_12PyKinematics_11__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3347,14 +3347,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__reduce_cython__", 0))) return NULL;
-  __pyx_r = __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_10__reduce_cython__(((struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11ur3e_ikfast_12PyKinematics_10__reduce_cython__(((struct __pyx_obj_11ur3e_ikfast_PyKinematics *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self) {
+static PyObject *__pyx_pf_11ur3e_ikfast_12PyKinematics_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -3379,7 +3379,7 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_10__reduce_cython__
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ur3e.ur3e_ikfast.PyKinematics.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ur3e_ikfast.PyKinematics.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -3394,15 +3394,15 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_10__reduce_cython__
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_13__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_11ur3e_ikfast_12PyKinematics_13__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4ur3e_11ur3e_ikfast_12PyKinematics_13__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_13__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_13__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_11ur3e_ikfast_12PyKinematics_13__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11ur3e_ikfast_12PyKinematics_13__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11ur3e_ikfast_12PyKinematics_13__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3472,11 +3472,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("ur3e.ur3e_ikfast.PyKinematics.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ur3e_ikfast.PyKinematics.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_12__setstate_cython__(((struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_11ur3e_ikfast_12PyKinematics_12__setstate_cython__(((struct __pyx_obj_11ur3e_ikfast_PyKinematics *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   {
@@ -3489,7 +3489,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_11ur3e_ikfast_12PyKinematics_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11ur3e_ikfast_PyKinematics *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -3514,14 +3514,14 @@ static PyObject *__pyx_pf_4ur3e_11ur3e_ikfast_12PyKinematics_12__setstate_cython
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ur3e.ur3e_ikfast.PyKinematics.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ur3e_ikfast.PyKinematics.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_4ur3e_11ur3e_ikfast_PyKinematics(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_11ur3e_ikfast_PyKinematics(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
@@ -3534,17 +3534,17 @@ static PyObject *__pyx_tp_new_4ur3e_11ur3e_ikfast_PyKinematics(PyTypeObject *t, 
   }
   if (unlikely(!o)) return 0;
   #endif
-  if (unlikely(__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_1__cinit__(o, __pyx_empty_tuple, NULL) < 0)) goto bad;
+  if (unlikely(__pyx_pw_11ur3e_ikfast_12PyKinematics_1__cinit__(o, __pyx_empty_tuple, NULL) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_4ur3e_11ur3e_ikfast_PyKinematics(PyObject *o) {
+static void __pyx_tp_dealloc_11ur3e_ikfast_PyKinematics(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !__Pyx_PyObject_GC_IsFinalized(o))) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_4ur3e_11ur3e_ikfast_PyKinematics) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_11ur3e_ikfast_PyKinematics) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -3553,7 +3553,7 @@ static void __pyx_tp_dealloc_4ur3e_11ur3e_ikfast_PyKinematics(PyObject *o) {
     PyObject *etype, *eval, *etb;
     PyErr_Fetch(&etype, &eval, &etb);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
-    __pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_3__dealloc__(o);
+    __pyx_pw_11ur3e_ikfast_12PyKinematics_3__dealloc__(o);
     __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
     PyErr_Restore(etype, eval, etb);
   }
@@ -3567,36 +3567,36 @@ static void __pyx_tp_dealloc_4ur3e_11ur3e_ikfast_PyKinematics(PyObject *o) {
   #endif
 }
 
-static PyMethodDef __pyx_methods_4ur3e_11ur3e_ikfast_PyKinematics[] = {
-  {"getDOF", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_5getDOF, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"forward", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_7forward, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"inverse", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_9inverse, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_11__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4ur3e_11ur3e_ikfast_12PyKinematics_13__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_11ur3e_ikfast_PyKinematics[] = {
+  {"getDOF", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11ur3e_ikfast_12PyKinematics_5getDOF, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"forward", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11ur3e_ikfast_12PyKinematics_7forward, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"inverse", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11ur3e_ikfast_12PyKinematics_9inverse, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11ur3e_ikfast_12PyKinematics_11__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_11ur3e_ikfast_12PyKinematics_13__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_4ur3e_11ur3e_ikfast_PyKinematics_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_4ur3e_11ur3e_ikfast_PyKinematics},
-  {Py_tp_methods, (void *)__pyx_methods_4ur3e_11ur3e_ikfast_PyKinematics},
-  {Py_tp_new, (void *)__pyx_tp_new_4ur3e_11ur3e_ikfast_PyKinematics},
+static PyType_Slot __pyx_type_11ur3e_ikfast_PyKinematics_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_11ur3e_ikfast_PyKinematics},
+  {Py_tp_methods, (void *)__pyx_methods_11ur3e_ikfast_PyKinematics},
+  {Py_tp_new, (void *)__pyx_tp_new_11ur3e_ikfast_PyKinematics},
   {0, 0},
 };
-static PyType_Spec __pyx_type_4ur3e_11ur3e_ikfast_PyKinematics_spec = {
-  "ur3e.ur3e_ikfast.PyKinematics",
-  sizeof(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics),
+static PyType_Spec __pyx_type_11ur3e_ikfast_PyKinematics_spec = {
+  "ur3e_ikfast.PyKinematics",
+  sizeof(struct __pyx_obj_11ur3e_ikfast_PyKinematics),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_4ur3e_11ur3e_ikfast_PyKinematics_slots,
+  __pyx_type_11ur3e_ikfast_PyKinematics_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_4ur3e_11ur3e_ikfast_PyKinematics = {
+static PyTypeObject __pyx_type_11ur3e_ikfast_PyKinematics = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ur3e.ur3e_ikfast.""PyKinematics", /*tp_name*/
-  sizeof(struct __pyx_obj_4ur3e_11ur3e_ikfast_PyKinematics), /*tp_basicsize*/
+  "ur3e_ikfast.""PyKinematics", /*tp_name*/
+  sizeof(struct __pyx_obj_11ur3e_ikfast_PyKinematics), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4ur3e_11ur3e_ikfast_PyKinematics, /*tp_dealloc*/
+  __pyx_tp_dealloc_11ur3e_ikfast_PyKinematics, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -3629,7 +3629,7 @@ static PyTypeObject __pyx_type_4ur3e_11ur3e_ikfast_PyKinematics = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_4ur3e_11ur3e_ikfast_PyKinematics, /*tp_methods*/
+  __pyx_methods_11ur3e_ikfast_PyKinematics, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -3641,7 +3641,7 @@ static PyTypeObject __pyx_type_4ur3e_11ur3e_ikfast_PyKinematics = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4ur3e_11ur3e_ikfast_PyKinematics, /*tp_new*/
+  __pyx_tp_new_11ur3e_ikfast_PyKinematics, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -3727,7 +3727,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
     {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
-    {&__pyx_n_s_ur3e_ur3e_ikfast, __pyx_k_ur3e_ur3e_ikfast, sizeof(__pyx_k_ur3e_ur3e_ikfast), 0, 0, 1, 1},
+    {&__pyx_n_s_ur3e_ikfast, __pyx_k_ur3e_ikfast, sizeof(__pyx_k_ur3e_ikfast), 0, 0, 1, 1},
     {&__pyx_kp_s_ur3e_ur3e_ikfast_pyx, __pyx_k_ur3e_ur3e_ikfast_pyx, sizeof(__pyx_k_ur3e_ur3e_ikfast_pyx), 0, 0, 1, 0},
     {0, 0, 0, 0, 0, 0, 0}
   };
@@ -3748,7 +3748,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "ur3e/ur3e_ikfast.pyx":33
+  /* "ur3e_ikfast.pyx":33
  *     def __dealloc__(self):
  *         del self.thisptr
  *     def getDOF(self):             # <<<<<<<<<<<<<<
@@ -3760,7 +3760,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple_);
   __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ur3e_ur3e_ikfast_pyx, __pyx_n_s_getDOF, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(1, 33, __pyx_L1_error)
 
-  /* "ur3e/ur3e_ikfast.pyx":35
+  /* "ur3e_ikfast.pyx":35
  *     def getDOF(self):
  *         return self.thisptr.num_of_joints
  *     def forward(self,vector[float] joint_config):             # <<<<<<<<<<<<<<
@@ -3772,7 +3772,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__3);
   __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ur3e_ur3e_ikfast_pyx, __pyx_n_s_forward, 35, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(1, 35, __pyx_L1_error)
 
-  /* "ur3e/ur3e_ikfast.pyx":37
+  /* "ur3e_ikfast.pyx":37
  *     def forward(self,vector[float] joint_config):
  *         return self.thisptr.forward(joint_config)
  *     def inverse(self,vector[float] ee_pose):             # <<<<<<<<<<<<<<
@@ -3861,27 +3861,27 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_4ur3e_11ur3e_ikfast_PyKinematics_spec, NULL); if (unlikely(!__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics)) __PYX_ERR(1, 27, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_4ur3e_11ur3e_ikfast_PyKinematics_spec, __pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
+  __pyx_ptype_11ur3e_ikfast_PyKinematics = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11ur3e_ikfast_PyKinematics_spec, NULL); if (unlikely(!__pyx_ptype_11ur3e_ikfast_PyKinematics)) __PYX_ERR(1, 27, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11ur3e_ikfast_PyKinematics_spec, __pyx_ptype_11ur3e_ikfast_PyKinematics) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
   #else
-  __pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics = &__pyx_type_4ur3e_11ur3e_ikfast_PyKinematics;
+  __pyx_ptype_11ur3e_ikfast_PyKinematics = &__pyx_type_11ur3e_ikfast_PyKinematics;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_11ur3e_ikfast_PyKinematics) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics->tp_print = 0;
+  __pyx_ptype_11ur3e_ikfast_PyKinematics->tp_print = 0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics->tp_dictoffset && __pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics->tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_11ur3e_ikfast_PyKinematics->tp_dictoffset && __pyx_ptype_11ur3e_ikfast_PyKinematics->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_11ur3e_ikfast_PyKinematics->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PyKinematics, (PyObject *) __pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PyKinematics, (PyObject *) __pyx_ptype_11ur3e_ikfast_PyKinematics) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_11ur3e_ikfast_PyKinematics) < 0) __PYX_ERR(1, 27, __pyx_L1_error)
   #endif
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -4164,14 +4164,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_ur3e__ur3e_ikfast) {
+  if (__pyx_module_is_main_ur3e_ikfast) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(1, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "ur3e.ur3e_ikfast")) {
-      if (unlikely((PyDict_SetItemString(modules, "ur3e.ur3e_ikfast", __pyx_m) < 0))) __PYX_ERR(1, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "ur3e_ikfast")) {
+      if (unlikely((PyDict_SetItemString(modules, "ur3e_ikfast", __pyx_m) < 0))) __PYX_ERR(1, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -4192,50 +4192,50 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
 
-  /* "ur3e/ur3e_ikfast.pyx":33
+  /* "ur3e_ikfast.pyx":33
  *     def __dealloc__(self):
  *         del self.thisptr
  *     def getDOF(self):             # <<<<<<<<<<<<<<
  *         return self.thisptr.num_of_joints
  *     def forward(self,vector[float] joint_config):
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4ur3e_11ur3e_ikfast_12PyKinematics_5getDOF, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyKinematics_getDOF, NULL, __pyx_n_s_ur3e_ur3e_ikfast, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 33, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_11ur3e_ikfast_12PyKinematics_5getDOF, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyKinematics_getDOF, NULL, __pyx_n_s_ur3e_ikfast, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics, __pyx_n_s_getDOF, __pyx_t_2) < 0) __PYX_ERR(1, 33, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_11ur3e_ikfast_PyKinematics, __pyx_n_s_getDOF, __pyx_t_2) < 0) __PYX_ERR(1, 33, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics);
+  PyType_Modified(__pyx_ptype_11ur3e_ikfast_PyKinematics);
 
-  /* "ur3e/ur3e_ikfast.pyx":35
+  /* "ur3e_ikfast.pyx":35
  *     def getDOF(self):
  *         return self.thisptr.num_of_joints
  *     def forward(self,vector[float] joint_config):             # <<<<<<<<<<<<<<
  *         return self.thisptr.forward(joint_config)
  *     def inverse(self,vector[float] ee_pose):
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4ur3e_11ur3e_ikfast_12PyKinematics_7forward, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyKinematics_forward, NULL, __pyx_n_s_ur3e_ur3e_ikfast, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_11ur3e_ikfast_12PyKinematics_7forward, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyKinematics_forward, NULL, __pyx_n_s_ur3e_ikfast, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics, __pyx_n_s_forward, __pyx_t_2) < 0) __PYX_ERR(1, 35, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_11ur3e_ikfast_PyKinematics, __pyx_n_s_forward, __pyx_t_2) < 0) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics);
+  PyType_Modified(__pyx_ptype_11ur3e_ikfast_PyKinematics);
 
-  /* "ur3e/ur3e_ikfast.pyx":37
+  /* "ur3e_ikfast.pyx":37
  *     def forward(self,vector[float] joint_config):
  *         return self.thisptr.forward(joint_config)
  *     def inverse(self,vector[float] ee_pose):             # <<<<<<<<<<<<<<
  *         return self.thisptr.inverse(ee_pose)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4ur3e_11ur3e_ikfast_12PyKinematics_9inverse, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyKinematics_inverse, NULL, __pyx_n_s_ur3e_ur3e_ikfast, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 37, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_11ur3e_ikfast_12PyKinematics_9inverse, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyKinematics_inverse, NULL, __pyx_n_s_ur3e_ikfast, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics, __pyx_n_s_inverse, __pyx_t_2) < 0) __PYX_ERR(1, 37, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_11ur3e_ikfast_PyKinematics, __pyx_n_s_inverse, __pyx_t_2) < 0) __PYX_ERR(1, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  PyType_Modified(__pyx_ptype_4ur3e_11ur3e_ikfast_PyKinematics);
+  PyType_Modified(__pyx_ptype_11ur3e_ikfast_PyKinematics);
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4ur3e_11ur3e_ikfast_12PyKinematics_11__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyKinematics___reduce_cython, NULL, __pyx_n_s_ur3e_ur3e_ikfast, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_11ur3e_ikfast_12PyKinematics_11__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyKinematics___reduce_cython, NULL, __pyx_n_s_ur3e_ikfast, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_reduce_cython, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4246,12 +4246,12 @@ if (!__Pyx_RefNanny) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4ur3e_11ur3e_ikfast_12PyKinematics_13__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyKinematics___setstate_cython, NULL, __pyx_n_s_ur3e_ur3e_ikfast, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_11ur3e_ikfast_12PyKinematics_13__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_PyKinematics___setstate_cython, NULL, __pyx_n_s_ur3e_ikfast, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_2) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "ur3e/ur3e_ikfast.pyx":1
+  /* "ur3e_ikfast.pyx":1
  * #This is a Cython file and extracts the relevant classes from the C++ header file.             # <<<<<<<<<<<<<<
  * 
  * # distutils: language = c++
@@ -4268,7 +4268,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init ur3e.ur3e_ikfast", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init ur3e_ikfast", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -4282,7 +4282,7 @@ if (!__Pyx_RefNanny) {
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init ur3e.ur3e_ikfast");
+    PyErr_SetString(PyExc_ImportError, "init ur3e_ikfast");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
