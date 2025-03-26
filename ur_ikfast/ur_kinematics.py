@@ -85,18 +85,14 @@ def pose_quaternion_from_matrix(matrix):
 class URKinematics():
 
     def __init__(self, robot_name):
-        if robot_name == 'ur3':
-            import ur3_ikfast as ur_ikfast
-        elif robot_name == 'ur3e':
+        if robot_name == 'ur3e':
             import ur3e_ikfast as ur_ikfast
-        elif robot_name == 'ur5':
-            import ur5_ikfast as ur_ikfast
-        elif robot_name == 'ur5e':
-            import ur5e_ikfast as ur_ikfast
-        elif robot_name == 'ur10':
-            import ur10_ikfast as ur_ikfast
-        elif robot_name == 'ur10e':
-            import ur10e_ikfast as ur_ikfast
+        elif robot_name == 'ur3e_pen_21':
+            import ur3e_pen_21_ikfast as ur_ikfast
+        elif robot_name == 'ur3e_pen_150':
+            import ur3e_pen_150_ikfast as ur_ikfast
+        elif robot_name == 'ur3e_pen_165':
+            import ur3e_pen_165_ikfast as ur_ikfast
         else:
             raise Exception("Unsupported robot")
 

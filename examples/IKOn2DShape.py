@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 import json
 
 # Initialize the UR3e Kinematics
-ur3e_arm = ur_kinematics.URKinematics('ur3e')
-
+#ur3e_arm = ur_kinematics.URKinematics('ur3e')
+ur3e_arm = ur_kinematics.URKinematics('ur3e_pen_150')
 
 def compute_inverse_kinematics(pos_raw, previous_angles):
     """
@@ -217,7 +217,13 @@ def back_up_point(point, length):
 # test zone de travail
 #traj_points = [[0, 0.3, 0.4], [0.3, -0.1, 0.4]]
 # Z shape
-#traj_points = [[0.064, 0.303, 0.15650000000000004], [0.064, 0.343, 0.15650000000000004], [0.10400000000000001, 0.303, 0.15650000000000004], [0.10400000000000001, 0.343, 0.15650000000000004], [0.10400000000000001, 0.343, 0.18650000000000007]]
+traj_points = [
+    [0.064, 0.303, 0.0], 
+    [0.064, 0.343, 0.0], 
+    [0.10400000000000001, 0.303, 0.0], 
+    [0.10400000000000001, 0.343, 0.0], 
+    [0.10400000000000001, 0.343, 0.05]
+]
 # Z shape then hit table
 #traj_points = [[0.104, 0.343, 0.2], [0.104, 0.343, 0.1], [0.104, 0.343, 0], [0.104, 0.343, -0.1], [0.104, 0.343, 0.3]]
 # rectangle shape
@@ -235,21 +241,21 @@ def back_up_point(point, length):
 ]'''
 
 
-#joint_trajectory = []
+joint_trajectory = []
 
 #for i in traj_points:
 #    joint_trajectory.append([i[0]/1000,i[1]/1000,i[2]/1000,math.degrees(i[3]),math.degrees(i[4]),math.degrees(i[5])])
-'''for i in traj_points:
+for i in traj_points:
     joint_trajectory.append([i[0],i[1],i[2],0.01,1.01,0.01,0.01])
-    r = R.from_quat([0.01,0.01,1.01,0.01], scalar_first=True)
-    normal = r.as_mrp()
-    length = -0.25
-    pos = i[:3]
-    print(pos)
-    end_pos = (np.array(pos) - np.array(normal) * length)  # Ending at the correct point
-    print(end_pos)
-    joint_trajectory.append([end_pos[0], end_pos[1], end_pos[2], 0.01, 1.01, 0.01, 0.01])
-'''
+    #r = R.from_quat([0.01,0.01,1.01,0.01], scalar_first=True)
+    #normal = r.as_mrp()
+    #length = -0.25
+    #pos = i[:3]
+    #print(pos)
+    #end_pos = (np.array(pos) - np.array(normal) * length)  # Ending at the correct point
+    #print(end_pos)
+    #joint_trajectory.append([end_pos[0], end_pos[1], end_pos[2], 0.01, 1.01, 0.01, 0.01])
+
 #print(joint_trajectory)
 
 
@@ -295,14 +301,21 @@ def back_up_point(point, length):
     [ 0.2292, 0.3215, 0.0957,-0.5025, 0.5046, 0.6682, 0.2153]
 ]'''
 # points of the trajectory
-joint_trajectory_raw = [
+'''joint_trajectory_raw = [
     [ 0.0957, 0.35  , 0.231 ,-0.2363, 0.3032, 0.8525, 0.3541],
     [ 0.0829, 0.3978, 0.231 ,-0.4271,-0.1594, 0.8485, 0.2686],
     [-0.0829, 0.3978, 0.231 , 0.3158, 0.5473, 0.6502, 0.4219]
+]'''
+
+# similar points with different orientations
+'''joint_trajectory_raw = [
+    [ 0.01, 0.35, 0.2, -0.2363, 0.3032,  0.8525, 0.3541],
+    [ 0.01, 0.35, 0.2, -0.4271, -0.1594, 0.8485, 0.2686],
+    [ 0.01, 0.35, 0.2, 0.908,   0.232,   0.174,  0.301],
 ]
+'''
 
-
-joint_trajectory = []
+'''joint_trajectory = []
 for i in joint_trajectory_raw:
     # for each point in the trajectory
     joint_trajectory.append(i)
@@ -311,7 +324,7 @@ for i in joint_trajectory_raw:
     length = -0.1
     back_up = back_up_point(i, length)
     joint_trajectory.append(back_up)
-
+'''
 #print("==================================================================================================")
 #print(f"Voila les points demandés en entrée: ({len(joint_trajectory)} points)")
 #print(joint_trajectory)
