@@ -8,7 +8,7 @@ import json
 
 # Initialize the UR3e Kinematics
 #ur3e_arm = ur_kinematics.URKinematics('ur3e')
-ur3e_arm = ur_kinematics.URKinematics('ur3e_pen_final_2')
+ur3e_arm = ur_kinematics.URKinematics('ur3e_pen_gripper')
 
 def compute_inverse_kinematics(pos_raw, previous_angles):
     """
