@@ -8,7 +8,7 @@ import json
 
 # Initialize the UR3e Kinematics
 #ur3e_arm = ur_kinematics.URKinematics('ur3e')
-ur3e_arm = ur_kinematics.URKinematics('ur3e_pen_150')
+ur3e_arm = ur_kinematics.URKinematics('ur3e_pen_final')
 
 def compute_inverse_kinematics(pos_raw, previous_angles):
     """
@@ -217,13 +217,13 @@ def back_up_point(point, length):
 # test zone de travail
 #traj_points = [[0, 0.3, 0.4], [0.3, -0.1, 0.4]]
 # Z shape
-traj_points = [
+'''traj_points = [
     [0.064, 0.303, 0.0], 
     [0.064, 0.343, 0.0], 
     [0.10400000000000001, 0.303, 0.0], 
     [0.10400000000000001, 0.343, 0.0], 
     [0.10400000000000001, 0.343, 0.05]
-]
+]'''
 # Z shape then hit table
 #traj_points = [[0.104, 0.343, 0.2], [0.104, 0.343, 0.1], [0.104, 0.343, 0], [0.104, 0.343, -0.1], [0.104, 0.343, 0.3]]
 # rectangle shape
@@ -241,12 +241,14 @@ traj_points = [
 ]'''
 
 
+
+
 joint_trajectory = []
 
 #for i in traj_points:
 #    joint_trajectory.append([i[0]/1000,i[1]/1000,i[2]/1000,math.degrees(i[3]),math.degrees(i[4]),math.degrees(i[5])])
-for i in traj_points:
-    joint_trajectory.append([i[0],i[1],i[2],0.01,1.01,0.01,0.01])
+#for i in traj_points:
+    #joint_trajectory.append([i[0],i[1],i[2],0.01,1.01,0.01,0.01])
     #r = R.from_quat([0.01,0.01,1.01,0.01], scalar_first=True)
     #normal = r.as_mrp()
     #length = -0.25
@@ -308,12 +310,38 @@ for i in traj_points:
 ]'''
 
 # similar points with different orientations
-'''joint_trajectory_raw = [
-    [ 0.01, 0.35, 0.2, -0.2363, 0.3032,  0.8525, 0.3541],
-    [ 0.01, 0.35, 0.2, -0.4271, -0.1594, 0.8485, 0.2686],
-    [ 0.01, 0.35, 0.2, 0.908,   0.232,   0.174,  0.301],
+joint_trajectory = [
+    [ 0.01, 0.35, 0.0, -0.346543784287115, -0.296221799766215, 0.88919633413857, -0.0385996148913219],
+    [ 0.01, 0.35, 0.0, -0.288390842651529, 0.353087341828493, 0.868185927289021, 0.195992975824476],
+    [ 0.01, 0.35, 0.0, 0.346543784287114, 0.296221799766215, 0.889196334138571, 0.0385996148913219],
 ]
-'''
+
+
+'''joint_trajectory = [
+    [ 0.0, 0.35, 0.0, 0.01, 1.01, 0.01, 0.01],]
+[ 0.01, 0.35, 0.215, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.210, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.205, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.200, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.195, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.190, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.185, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.180, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.195, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.190, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.185, 0.2, 0.0, 1, 0.0],
+    [ 0.01, 0.35, 0.180, 0.2, 0.0, 1, 0.0],
+]'''
+
+# test pour guillaume porte stylo
+'''joint_trajectory = [
+    [0.1664148371899884, 0.3001690082761688, 0.18520303487360162, 0.0008, 0.9999, 0, 0], 
+    [0.1513499618294426, 0.30212194444001716, 0.12551891421236722, 0.0008, 0.9999, 0, 0], 
+    [0.1664148371899884, 0.3001690082761688, 0.18520303487360162, 0.0008, 0.9999, 0, 0], 
+    [0.11181405488384043, 0.24194206538072482, 0.1841540860427493, 0.0008, 0.9999, 0, 0], 
+    [0.09674917952329463, 0.24389500154457322, 0.1244699653815149, 0.0008, 0.9999, 0, 0], 
+    [0.11181405488384043, 0.24194206538072482, 0.1841540860427493, 0.0008, 0.9999, 0, 0]
+]'''
 
 '''joint_trajectory = []
 for i in joint_trajectory_raw:
@@ -340,10 +368,14 @@ interpolated_traj = interpolate_lines(joint_trajectory, 0.6)
 
 # computes the joint trajectory for all the points we need it to go through
 home = [0.950855376, -1.66225158, 0.635299848, -0.597600736, -1.57219259, 0]
-traj = compute_joint_trajectory_for_points_tab(interpolated_traj, home)
+traj_0 = compute_joint_trajectory_for_points_tab(interpolated_traj, home)
 
 # adds home position at start and finish
-traj = [home] + traj + [home]
+#traj = [home] + traj + [home]
+traj = [home]
+for i in traj_0:
+    traj = traj + [i] + [home]
+
 print(interpolated_traj)
 # Generate trajectory file
 generate_trajectory_file(traj, filename="traj.json")

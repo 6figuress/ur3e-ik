@@ -93,6 +93,10 @@ class URKinematics():
             import ur3e_pen_150_ikfast as ur_ikfast
         elif robot_name == 'ur3e_pen_165':
             import ur3e_pen_165_ikfast as ur_ikfast
+        elif robot_name == 'ur3e_pen_203':
+            import ur3e_pen_203_ikfast as ur_ikfast
+        elif robot_name == 'ur3e_pen_final':
+            import ur3e_pen_final_ikfast as ur_ikfast
         else:
             raise Exception("Unsupported robot")
 
