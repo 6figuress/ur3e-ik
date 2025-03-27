@@ -28,6 +28,12 @@ setup(
                 language="c++",
                 libraries=["lapack"],
             ),
+			Extension(
+                "ur3e_pen_gripper_ikfast",
+                ["ur3e_pen_gripper/ur3e_pen_ikfast.pyx", "ur3e_pen_gripper/ikfast_wrapper.cpp"],
+                language="c++",
+                libraries=["lapack"],
+            ),
         ]
     ),
 )
