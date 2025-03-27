@@ -86,10 +86,9 @@ Ex. rosrun collada_urdf urdf_to_collada ur3e.urdf ur3e.dae
 3. Make an xml wrapper called [robot_name].wrapper.xml (example in the ur3e directory)
 4. Pass these files to a running instance of the docker image (manually or with a volume in a docker compose)
 5. Run the command in the docker: openrave.py --database inversekinematics --robot=[wrapper_name].xml --iktype=transform6d --iktests=100
-6. This should take about an hour
-7. Copy and modify an existing .pyx file for cython (there should be one per robot directory
-8. Add your robot to the setup.py in the same format as the others
-9. Run the command in local in the ur3e-ik directory: python setup.py build_ext --inplace
-10. Run the command in local: pip install -e .
-11. Add your robot to the init in ur_ikfast/ur_kinematics.py at line 45
-12. You should be able to call this: new_arm = ur_kinematics.URKinematics('[robot_name]')
+6. Copy and modify an existing .pyx file for cython (there should be one per robot directory
+7. Add your robot to the setup.py in the same format as the others
+8. Run the command in local in the ur3e-ik directory: python setup.py build_ext --inplace
+9. Run the command in local: pip install -e .
+10. Add your robot to the init in ur_ikfast/ur_kinematics.py at line 45
+11. You should be able to call this: new_arm = ur_kinematics.URKinematics('[robot_name]')
