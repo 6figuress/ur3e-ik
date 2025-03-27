@@ -8,7 +8,7 @@ import json
 
 # Initialize the UR3e Kinematics
 #ur3e_arm = ur_kinematics.URKinematics('ur3e')
-ur3e_arm = ur_kinematics.URKinematics('ur3e_pen_final')
+ur3e_arm = ur_kinematics.URKinematics('ur3e_pen_final_2')
 
 def compute_inverse_kinematics(pos_raw, previous_angles):
     """
@@ -310,12 +310,16 @@ joint_trajectory = []
 ]'''
 
 # similar points with different orientations
-joint_trajectory = [
+'''joint_trajectory = [
     [ 0.01, 0.35, 0.0, -0.346543784287115, -0.296221799766215, 0.88919633413857, -0.0385996148913219],
     [ 0.01, 0.35, 0.0, -0.288390842651529, 0.353087341828493, 0.868185927289021, 0.195992975824476],
     [ 0.01, 0.35, 0.0, 0.346543784287114, 0.296221799766215, 0.889196334138571, 0.0385996148913219],
-]
+]'''
 
+# test martin pipeline
+joint_trajectory = [
+    [ 0.0148, 0.3101, 0.1981, 0.00003, 0.9999, 0.0039, -0.0036],
+]
 
 '''joint_trajectory = [
     [ 0.0, 0.35, 0.0, 0.01, 1.01, 0.01, 0.01],]

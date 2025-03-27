@@ -22,6 +22,12 @@ setup(
                 language="c++",
                 libraries=["lapack"],
             ),
+			Extension(
+                "ur3e_pen_final_2_ikfast",
+                ["ur3e_pen_final_2/ur3e_pen_ikfast.pyx", "ur3e_pen_final_2/ikfast_wrapper.cpp"],
+                language="c++",
+                libraries=["lapack"],
+            ),
         ]
     ),
 )
