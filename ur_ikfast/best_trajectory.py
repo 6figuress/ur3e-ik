@@ -1,6 +1,6 @@
 import copy
 
-JOINT_WEIGHT_ARR = [1, 1, 1, 1, 1, 1]
+JOINT_WEIGHT_ARR = [10, 5, 2, 1, 1, 0]
 
 class Trajectory:
     def __init__(self, traj: list[list[float]], joint_weights=JOINT_WEIGHT_ARR):
