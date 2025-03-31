@@ -5,26 +5,41 @@ from ur_ikfast.best_trajectory import TrajectoryPlanner
 
 from security import ValidateRobotPosition
 
-def generate_trajectory(data, filename="trajectory.json"):
+def generate_trajectory_file(data, filename="trajectory.json"):
+    """
+    Generates a JSON trajectory file from the computed joint trajectory data.
+ 
+    Parameters
+    ----------
+    data : list[list[float]]
+        The joint trajectory data containing joint positions.
+    filename : str, optional
+        The name of the output JSON file (default is "trajectory.json").
+ 
+    Returns
+    -------
+    None
+        The function writes the trajectory data into a JSON file.
+    """
     modTraj = []
-    time_step = 2  # Incrément du temps
-    time = 4
-
+    time_step = int(2000000000)  # Incrément du temps [us]
+    time = 4000000000 # Temps pour aller a la position initiale [us]
+   
     for arr in data:
         positions = [round(float(x), 4) if abs(x) >= 1e-4 else 0.0 for x in arr]
         velocities = [0.0] * 6  # Vélocités à zéro
-        modTraj.append(
-            {
-                "positions": positions,
-                "velocities": velocities,
-                "time_from_start": [time, 0],
-            }
-        )
+        ns_time = time % 1000000000
+        s_time = int((time - ns_time)/1000000000)
+        modTraj.append({
+            "positions": positions,
+            "velocities": velocities,
+            "time_from_start": [s_time, ns_time]
+        })
         time += time_step
-
+   
     with open(filename, "w") as f:
         json.dump({"modTraj": modTraj}, f, indent=4)
-
+   
     print(f"Fichier JSON '{filename}' généré avec succès.")
 
 
