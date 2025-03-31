@@ -210,6 +210,42 @@ class MultiURKinematics():
             if sol is not None:
                 solutions.append(sol.tolist())
         return solutions
+    
+    def number_valid_solutions(self, ee_poses, logs=False):
+        """
+        Check if there is a valid IK solution for the given end-effector poses.
+        
+        Parameters:
+            ee_poses (list): List of end-effector poses to check
+            
+        Returns:
+            list(tuple(ee_pose, float)): List of tuples containing the end-effector pose and the number of corresponding solutions
+        """
+
+        valid_sols = []
+        for ee_pose in ee_poses:
+            solutions = self.kinematics.inverse(ee_pose=ee_pose, all_solutions=True)
+
+            if solutions is None:
+                if logs:
+                    print(f"No solutions found for pose {ee_pose}")
+                valid_sols.append((ee_pose, 0))
+                continue
+
+            number_of_solutions = len(solutions)
+
+            secure_solution = ValidateRobotPosition([solutions], logs=False).finalPositions
+
+            number_of_secure_solutions = len(secure_solution)
+
+            if logs:
+                print(f"Pose {ee_pose} has {number_of_solutions} solutions, {number_of_secure_solutions} of which are secure")
+
+            if secure_solution[0] is not None:
+                valid_sols.append((ee_pose, len(secure_solution)))
+            else:
+                valid_sols.append((ee_pose, 0))
+        return valid_sols
 
     def inverse_optimal(
         self, ee_poses, q_guess=np.zeros(6), max_retries=5, pertubation=1e-3, logs=True
