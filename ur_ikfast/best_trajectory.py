@@ -108,4 +108,16 @@ def main():
     print(f"Best Trajectory: {best_trajectory}")
 
 if __name__ == "__main__":
-    main()
+    import numpy as np
+
+    # Define the shape
+    shape = (600, 5, 6)
+
+    # Generate random numbers between -pi and pi
+    random_numbers = np.random.uniform(-np.pi, np.pi, shape)
+
+    # Display the shape of the generated array to confirm
+    random_numbers.shape
+    import ipdb
+
+    ipdb.set_trace()
