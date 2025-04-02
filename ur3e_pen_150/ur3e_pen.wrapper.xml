@@ -1,6 +1,0 @@
-<robot file="ur3e_pen.dae">
-        <Manipulator name="ur3e_pen">
-          <base>base_link</base>
-          <effector>tool0</effector>
-        </Manipulator>
-</robot>

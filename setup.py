@@ -17,26 +17,20 @@ setup(
     ext_modules=cythonize(
         [
 			Extension(
-                "ur3e_pen_final_ikfast",
-                ["ur3e_pen_final/ur3e_pen_ikfast.pyx", "ur3e_pen_final/ikfast_wrapper.cpp"],
+                "ur3e_pen_ikfast",
+                ["ur3e_pen/ur3e_pen_ikfast.pyx", "ur3e_pen/ikfast_wrapper.cpp"],
                 language="c++",
                 libraries=["lapack"],
             ),
 			Extension(
-                "ur3e_pen_final_2_ikfast",
-                ["ur3e_pen_final_2/ur3e_pen_ikfast.pyx", "ur3e_pen_final_2/ikfast_wrapper.cpp"],
-                language="c++",
-                libraries=["lapack"],
-            ),
-			Extension(
-                "ur3e_pen_gripper_2_ikfast",
-                ["ur3e_pen_gripper_2/ur3e_pen_ikfast.pyx", "ur3e_pen_gripper_2/ikfast_wrapper.cpp"],
+                "ur3e_gripper_ikfast",
+                ["ur3e_gripper/ur3e_gripper_ikfast.pyx", "ur3e_gripper/ikfast_wrapper.cpp"],
                 language="c++",
                 libraries=["lapack"],
             ),
 			Extension(
                 "ur3e_minipen_ikfast",
-                ["ur3e_minipen/ur3e_pen_ikfast.pyx", "ur3e_minipen/ikfast_wrapper.cpp"],
+                ["ur3e_minipen/ur3e_minipen_ikfast.pyx", "ur3e_minipen/ikfast_wrapper.cpp"],
                 language="c++",
                 libraries=["lapack"],
             ),
