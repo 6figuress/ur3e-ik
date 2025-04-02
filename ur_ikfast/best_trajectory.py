@@ -1,123 +1,398 @@
-import copy
-
 JOINT_WEIGHT_ARR = [10, 5, 2, 1, 1, 0]
 
+import copy
+import heapq
+import numpy as np
+import datetime
+
+
+import numpy as np
+import heapq
+from typing import List, Tuple, Dict, Optional
+from dataclasses import dataclass, field
+
+# class Trajectory:
+#     def __init__(self, traj: list[list[float]], joint_weights=None):
+#         """
+#         Class to store a trajectory and compute its weight.
+#         traj: A list of joint positions (each a list of floats)
+#         joint_weights: A NumPy array of weights for each joint (default: all ones)
+#         """
+#         self.trajectory = np.array(traj, dtype=np.float64)  # Store as NumPy array
+#         self.joint_weights = (
+#             np.array(joint_weights, dtype=np.float64)
+#             if joint_weights is not None
+#             else np.ones(self.trajectory.shape[1])
+#         )
+#         self.weight = self.eval_weight()
+
+#     def __lt__(self, other):
+#         """Enables sorting by weight in priority queues"""
+#         return self.weight < other.weight
+
+#     def __str__(self):
+#         return f"Trajectory: {self.trajectory.tolist()}, Weight: {self.weight}"
+
+#     def __iter__(self):
+#         return iter(self.trajectory)
+
+#     def eval_weight(self):
+#         """Computes the weight of the trajectory using NumPy"""
+#         if len(self.trajectory) < 2:
+#             return 0.0
+#         diffs = np.abs(
+#             np.diff(self.trajectory, axis=0)
+#         )  # Compute differences between consecutive positions
+#         return np.sum(diffs * self.joint_weights)  # Apply joint weights and sum
+
+#     def add_point(self, pos: list[float]):
+#         """Returns a new trajectory object with an additional point"""
+#         new_traj = np.vstack([self.trajectory, pos])  # Efficiently stack new point
+#         return Trajectory(new_traj.tolist(), self.joint_weights)
+
+
+# class TrajectoryPlanner:
+#     def __init__(self, joint_weights=None):
+#         """Initialize the trajectory planner with optional joint weights"""
+#         self.joint_weights = (
+#             np.array(joint_weights, dtype=np.float64)
+#             if joint_weights is not None
+#             else np.ones(6)
+#         )
+
+#     def kill_traj(self, traj: list[Trajectory]):
+#         """
+#         Remove suboptimal trajectories: If two paths lead to the same joint state,
+#         keep the one with the lower cost.
+#         """
+#         best_trajs = {}
+#         for t in traj:
+#             last_position = tuple(
+#                 t.trajectory[-1]
+#             )  # Convert NumPy row to tuple (hashable)
+#             if (
+#                 last_position not in best_trajs
+#                 or t.weight < best_trajs[last_position].weight
+#             ):
+#                 best_trajs[last_position] = t
+#         return list(best_trajs.values())
+
+#     def best_first_search(self, nodes: list[list[list[float]]]):
+#         """
+#         Perform a best-first search to find the optimal trajectory.
+#         nodes: List of possible joint states at each step.
+#         """
+#         if not nodes:
+#             return Trajectory([], self.joint_weights)
+
+#         heap = []
+#         for i in nodes[0]:
+#             for j in nodes[1]:
+#                 heapq.heappush(heap, Trajectory([i, j], self.joint_weights))
+
+#         while heap and len(heap[0].trajectory) < len(nodes):
+#             best_traj = heapq.heappop(heap)  # Expand lowest-cost path
+#             next_index = len(best_traj.trajectory)
+
+#             for next_pos in nodes[next_index]:
+#                 new_traj = best_traj.add_point(next_pos)
+#                 heapq.heappush(heap, new_traj)
+
+#             heap = self.kill_traj(heap)  # Prune suboptimal paths
+
+#         return heap[0]
+
+
+# Assuming JOINT_WEIGHT_ARR is defined elsewhere
+# If not, we'll define a default
+import numpy as np
+import heapq
+from typing import List, Tuple
+
+# Assuming DEFAULT_JOINT_WEIGHTS is defined elsewhere in your code
+DEFAULT_JOINT_WEIGHTS = np.ones(
+    3, dtype=np.float64
+)  # Default example, adjust as needed
+
+
 class Trajectory:
-    def __init__(self, traj: list[list[float]], joint_weights=JOINT_WEIGHT_ARR):
+    """Class to store a trajectory and compute its weight using NumPy arrays"""
+
+    def __init__(self, traj: np.ndarray, joint_weights: np.ndarray = None):
         """
-        Class to store a trajectory and compute its weight
-        traj: A list of joint positions (each a list of 6 floats)
-        joint_weights: A list of weights for each joint (default: all ones)
+        Initialize a trajectory and compute its weight
+
+        Parameters:
+        traj: np.ndarray - A 2D array of shape (n_points, n_joints)
+        joint_weights: np.ndarray - A 1D array of shape (n_joints,)
         """
-        self.trajectory = traj
-        self.joint_weights = joint_weights
+        # Ensure trajectory is a numpy array
+        self.trajectory = np.asarray(traj, dtype=np.float64)
+
+        # Handle empty trajectories
+        if self.trajectory.size == 0:
+            if isinstance(traj, list) and len(traj) == 0:
+                self.trajectory = np.empty(
+                    (0, len(joint_weights) if joint_weights is not None else 0)
+                )
+            else:
+                self.trajectory = np.empty((0, 0))
+
+        # Ensure proper shape for single point trajectories
+        if len(self.trajectory.shape) == 1:
+            self.trajectory = self.trajectory.reshape(1, -1)
+
+        # Set joint weights
+        if joint_weights is None:
+            if self.trajectory.shape[1] > 0:
+                self.joint_weights = np.ones(self.trajectory.shape[1], dtype=np.float64)
+            else:
+                self.joint_weights = DEFAULT_JOINT_WEIGHTS
+        else:
+            self.joint_weights = np.asarray(joint_weights, dtype=np.float64)
+
         self.weight = 0.0
         self.eval_weight()
 
     def __lt__(self, other):
-        """ 
-        This is useful for sorting the trajectories by weight
-        """
+        """For sorting trajectories by weight"""
         return self.weight < other.weight
 
     def __str__(self):
-        """ Return a string representation of the trajectory and its weight """
-        return f"Trajectory: {str(self.trajectory)}, Weight: {str(self.weight)}"
-    
+        """String representation of the trajectory and its weight"""
+        return f"Trajectory: {self.trajectory}, Weight: {self.weight}"
+
     def __iter__(self):
-        """ Return an iterator for the trajectory """
+        """Iterator for the trajectory"""
         return iter(self.trajectory)
 
     def eval_weight(self):
-        """ Computes the weight of the trajectory """
-        self.weight = 0
+        """Compute trajectory weight using vectorized operations"""
         if len(self.trajectory) > 1:
-            for i in range(len(self.trajectory) - 1):
-                for j in range(len(self.trajectory[i])):
-                    self.weight += abs(self.trajectory[i][j] - self.trajectory[i+1][j]) * self.joint_weights[j]
+            # Calculate differences between consecutive points
+            diffs = np.diff(self.trajectory, axis=0)
+            # Apply weights to the absolute differences and sum
+            self.weight = np.sum(np.abs(diffs) * self.joint_weights)
 
-    def add_point(self, pos: list[float]):
-        """ Add a point to the trajectory and return a new trajectory object """
-        new_trajectory = self.trajectory + [pos]
-        return Trajectory(new_trajectory, self.joint_weights)
+    def add_point(self, pos: np.ndarray) -> "Trajectory":
+        """
+        Add a point to the trajectory and return a new trajectory object
+
+        Parameters:
+        pos: np.ndarray - A 1D array of joint positions
+
+        Returns:
+        Trajectory - A new trajectory object with the added point
+        """
+        pos_array = np.asarray(pos, dtype=np.float64).reshape(1, -1)
+        new_trajectory = (
+            np.vstack((self.trajectory, pos_array))
+            if self.trajectory.size > 0
+            else pos_array
+        )
+
+        # Create new trajectory
+        result = Trajectory(new_trajectory, self.joint_weights)
+
+        # Optimize: incrementally update weight instead of recomputing
+        if len(self.trajectory) > 0:
+            last_point = self.trajectory[-1]
+            increment = np.sum(np.abs(pos_array - last_point) * self.joint_weights)
+            result.weight = self.weight + increment
+
+        return result
+
+    def get_last_position_tuple(self) -> Tuple[float, ...]:
+        """Return the last position as a hashable tuple for dictionary keys"""
+        if self.trajectory.size > 0:
+            return tuple(self.trajectory[-1])
+        return tuple()
+
 
 class TrajectoryPlanner:
-    def __init__(self, joint_weights=JOINT_WEIGHT_ARR):
-        """ Initialize the trajectory planner with optional joint weights """
-        self.joint_weights = joint_weights
-
-    def kill_traj(self, traj: list[Trajectory]):
+    def __init__(self, joint_weights: np.ndarray = None):
         """
-        Remove suboptimal trajectories (i.e., if two paths lead to the same joint state, 
-        the one with less cost is always better)
+        Initialize the trajectory planner with optional joint weights
+
+        Parameters:
+        joint_weights: np.ndarray - A 1D array of weights for each joint
+        """
+        self.joint_weights = np.asarray(
+            joint_weights if joint_weights is not None else DEFAULT_JOINT_WEIGHTS,
+            dtype=np.float64,
+        )
+
+    def kill_traj(self, trajectories: List[Trajectory]) -> List[Trajectory]:
+        """
+        Remove suboptimal trajectories using a dictionary lookup
+
+        Parameters:
+        trajectories: List[Trajectory] - List of trajectory objects to filter
+
+        Returns:
+        List[Trajectory] - List of optimal trajectories
         """
         best_trajs = {}
-        for i in traj:
-            last_position = tuple(i.trajectory[-1])
-            if last_position not in best_trajs or best_trajs[last_position].weight > i.weight:
-                best_trajs[last_position] = i  # Keep the trajectory with the lowest weight
+
+        for traj in trajectories:
+            last_position = traj.get_last_position_tuple()
+            if (
+                last_position not in best_trajs
+                or best_trajs[last_position].weight > traj.weight
+            ):
+                best_trajs[last_position] = traj
+
         return list(best_trajs.values())
 
-    def best_first_search(self, nodes: list[list[list[float]]]):
+    def best_first_search(self, nodes) -> Trajectory:
         """
-        Perform a best-first search to find the optimal trajectory
-        nodes: List of possible joint states at each step
+        Perform a best-first search using a priority queue for efficiency.
+        Modified to handle variable number of options per layer.
+
+        Parameters:
+        nodes: List[List[np.ndarray]] or similar structure where:
+              - nodes[i] is the list of options for layer i
+              - each option is a numpy array of joint positions
+
+        Returns:
+        Trajectory - The optimal trajectory
         """
-        trajectories = []
+        # Check if nodes is empty
+        if not nodes or len(nodes) == 0:
+            return Trajectory(
+                np.empty((0, len(self.joint_weights))), self.joint_weights
+            )
 
-        # If there are no nodes, return an empty trajectory
-        if len(nodes) == 0:
-            return Trajectory([], self.joint_weights)
-        
-        # Compute all possibilities for node 0 to node 1
-        for i in nodes[0]:
-            for j in nodes[1]:
-                trajectories.append(Trajectory([i, j], self.joint_weights))
+        # Handle case with only one layer
+        if len(nodes) == 1:
+            if len(nodes[0]) > 0:
+                return Trajectory(nodes[0][0].reshape(1, -1), self.joint_weights)
+            else:
+                return Trajectory(
+                    np.empty((0, len(self.joint_weights))), self.joint_weights
+                )
 
-        # Don't explore suboptimal paths
-        trajectories = self.kill_traj(trajectories)
-        trajectories.sort()  # Sorting so best solution is always at the start
-        
-        while len(trajectories[0].trajectory) < len(nodes):
-            for i in nodes[len(trajectories[0].trajectory)]:
-                # Compute possibilities for next nodes, only on the best path so far
-                newTraj = copy.deepcopy(trajectories[0].trajectory)
-                newTraj.append(i)
-                trajectories.append(Trajectory(newTraj, self.joint_weights))
+        # Convert input to a consistent format (list of lists of numpy arrays)
+        processed_nodes = []
+        for layer in nodes:
+            if isinstance(layer, np.ndarray):
+                # Handle numpy arrays: could be 2D (set of options) or 3D (layer of options)
+                if len(layer.shape) == 3:  # [layer_idx, option_idx, joint_idx]
+                    processed_nodes.append([option for option in layer])
+                elif len(layer.shape) == 2:  # [option_idx, joint_idx]
+                    processed_nodes.append([option for option in layer])
+                else:  # Single option [joint_idx]
+                    processed_nodes.append([layer])
+            else:  # Already a list of options
+                processed_nodes.append(layer)
 
-            # Replace the best path with the new path
-            trajectories.pop(0)
-            trajectories = self.kill_traj(trajectories)
-            trajectories.sort()  # Sorting so best solution is always at the start
-        
-        return trajectories[0]
+        # Priority queue for best-first search
+        queue = []
 
-def main():
-    joints = [
-        [[0.0, 0.1, 0.2, 0.3, 0.4, 0.5],
-         [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]],
-        [[0.2, 0.3, 0.4, 0.5, 0.6, 0.7],
-         [0.3, 0.4, 0.5, 0.6, 0.7, 0.8]]
-    ]
+        # Initialize with trajectories from first to second node
+        for start_point in processed_nodes[0]:
+            start_point = np.asarray(start_point, dtype=np.float64)
 
-    planner = TrajectoryPlanner()
+            # Handle different dimensions for start points
+            if len(start_point.shape) == 0:  # scalar
+                start_point = np.array([start_point])
+            elif len(start_point.shape) == 2:  # already 2D
+                start_point = start_point[0]  # Take first option if multiple
 
-    # Perform a best-first search to find the optimal trajectory
-    best_trajectory = planner.best_first_search(joints)
+            for next_point in processed_nodes[1]:
+                next_point = np.asarray(next_point, dtype=np.float64)
 
-    print(f"Best Trajectory: {best_trajectory}")
+                # Handle different dimensions for next points
+                if len(next_point.shape) == 0:  # scalar
+                    next_point = np.array([next_point])
+                elif len(next_point.shape) == 2:  # already 2D
+                    next_point = next_point[0]  # Take first option if multiple
+
+                # Create a trajectory with two points
+                traj_points = np.vstack(
+                    (start_point.reshape(1, -1), next_point.reshape(1, -1))
+                )
+                traj = Trajectory(traj_points, self.joint_weights)
+
+                # Use a tuple of (weight, unique_id, trajectory) for the heap
+                heapq.heappush(queue, (traj.weight, id(traj), traj))
+
+        # Track best paths to each state
+        best_paths = {}
+
+        while queue:
+            _, _, current_traj = heapq.heappop(queue)
+            current_layer = len(current_traj.trajectory) - 1
+
+            # If we've reached the final layer, we're done
+            if current_layer == len(processed_nodes) - 1:
+                return current_traj
+
+            # Skip if we already have a better path to this state
+            last_pos_tuple = current_traj.get_last_position_tuple()
+            if (
+                last_pos_tuple in best_paths
+                and best_paths[last_pos_tuple].weight < current_traj.weight
+            ):
+                continue
+
+            # Mark this as the best path to this state
+            best_paths[last_pos_tuple] = current_traj
+
+            # Expand to next layer
+            next_layer = current_layer + 1
+            if next_layer < len(processed_nodes):
+                for next_point in processed_nodes[next_layer]:
+                    next_point = np.asarray(next_point, dtype=np.float64)
+
+                    # Handle different dimensions
+                    if len(next_point.shape) == 0:  # scalar
+                        next_point = np.array([next_point])
+                    elif len(next_point.shape) == 2:  # already 2D
+                        next_point = next_point[0]  # Take first option if multiple
+
+                    new_traj = current_traj.add_point(next_point)
+                    next_pos_tuple = new_traj.get_last_position_tuple()
+
+                    # Only add if it's better than what we've seen
+                    if (
+                        next_pos_tuple not in best_paths
+                        or best_paths[next_pos_tuple].weight > new_traj.weight
+                    ):
+                        heapq.heappush(queue, (new_traj.weight, id(new_traj), new_traj))
+
+        # If queue is empty and we haven't returned, return the best path we've found
+        if best_paths:
+            return min(best_paths.values(), key=lambda t: t.weight)
+        return Trajectory(np.empty((0, len(self.joint_weights))), self.joint_weights)
+
 
 if __name__ == "__main__":
     import numpy as np
 
     # Define the shape
-    shape = (600, 5, 6)
+    shape = (5000, 5, 6)
 
     # Generate random numbers between -pi and pi
     random_numbers = np.random.uniform(-np.pi, np.pi, shape)
 
     # Display the shape of the generated array to confirm
     random_numbers.shape
+
+    toCompute = random_numbers.tolist()
+
+    planner = TrajectoryPlanner(JOINT_WEIGHT_ARR)
+
+    then = datetime.datetime.now()
+
+    print("Starting")
+
+    best = planner.best_first_search(toCompute)
+
+    now = datetime.datetime.now()
+
+    print("Took : ", now - then)
+
     import ipdb
 
     ipdb.set_trace()
