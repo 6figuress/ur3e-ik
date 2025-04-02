@@ -101,6 +101,10 @@ class URKinematics():
             import ur3e_pen_final_2_ikfast as ur_ikfast
         elif robot_name == 'ur3e_pen_gripper':
             import ur3e_pen_gripper_ikfast as ur_ikfast
+        elif robot_name == 'ur3e_pen_gripper_2':
+            import ur3e_pen_gripper_2_ikfast as ur_ikfast
+        elif robot_name == 'ur3e_minipen':
+            import ur3e_minipen_ikfast as ur_ikfast
         else:
             raise Exception("Unsupported robot")
 
