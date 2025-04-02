@@ -85,24 +85,10 @@ def pose_quaternion_from_matrix(matrix):
 class URKinematics():
 
     def __init__(self, robot_name):
-        if robot_name == 'ur3e':
-            import ur3e_ikfast as ur_ikfast
-        elif robot_name == 'ur3e_pen_21':
-            import ur3e_pen_21_ikfast as ur_ikfast
-        elif robot_name == 'ur3e_pen_150':
-            import ur3e_pen_150_ikfast as ur_ikfast
-        elif robot_name == 'ur3e_pen_165':
-            import ur3e_pen_165_ikfast as ur_ikfast
-        elif robot_name == 'ur3e_pen_203':
-            import ur3e_pen_203_ikfast as ur_ikfast
-        elif robot_name == 'ur3e_pen_final':
-            import ur3e_pen_final_ikfast as ur_ikfast
-        elif robot_name == 'ur3e_pen_final_2':
-            import ur3e_pen_final_2_ikfast as ur_ikfast
-        elif robot_name == 'ur3e_pen_gripper':
-            import ur3e_pen_gripper_ikfast as ur_ikfast
-        elif robot_name == 'ur3e_pen_gripper_2':
-            import ur3e_pen_gripper_2_ikfast as ur_ikfast
+        if robot_name == 'ur3e_pen':
+            import ur3e_pen_ikfast as ur_ikfast
+        elif robot_name == 'ur3e_gripper':
+            import ur3e_gripper_ikfast as ur_ikfast
         elif robot_name == 'ur3e_minipen':
             import ur3e_minipen_ikfast as ur_ikfast
         else:
