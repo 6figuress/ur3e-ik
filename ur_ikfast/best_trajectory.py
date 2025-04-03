@@ -20,7 +20,7 @@ from typing import List, Tuple
 
 # Assuming DEFAULT_JOINT_WEIGHTS is defined elsewhere in your code
 DEFAULT_JOINT_WEIGHTS = np.ones(
-    3, dtype=np.float64
+    6, dtype=np.float64
 )  # Default example, adjust as needed
 
 

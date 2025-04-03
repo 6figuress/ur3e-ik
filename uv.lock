@@ -264,7 +264,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.2.3" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "scipy", specifier = ">=1.15.2" },
-    { name = "security", git = "https://github.com/6figuress/SecurityModule.git?rev=develop" },
+    { name = "security", git = "https://github.com/6figuress/SecurityModule.git" },
 ]
 
 [package.metadata.requires-dev]
@@ -836,7 +836,7 @@ wheels = [
 [[package]]
 name = "security"
 version = "0.1.0"
-source = { git = "https://github.com/6figuress/SecurityModule.git?rev=develop#dee70619c8cfb7385767960722940851e5478e2c" }
+source = { git = "https://github.com/6figuress/SecurityModule.git#c243f512620a2fb07e2564c39b9f6192314c5b28" }
 dependencies = [
     { name = "matplotlib" },
     { name = "numpy" },
@@ -858,7 +858,7 @@ wheels = [
 [[package]]
 name = "simulator"
 version = "0.1.0"
-source = { git = "https://github.com/6figuress/phys_simulator.git?rev=develop#562dcbec00f2039c22938bc8947a8eddb3bc4983" }
+source = { git = "https://github.com/6figuress/phys_simulator.git#a7e06a0cf555783afef6803ca3ca3eac5d432709" }
 dependencies = [
     { name = "numpy" },
     { name = "pybullet" },

@@ -4,7 +4,7 @@ import numpy as np
 from IKOn2DShape import compute_inverse_kinematics, back_up_point, interpolate_lines
 from ur_ikfast import ur_kinematics
 
-ur3e_arm = ur_kinematics.URKinematics('ur3e')
+ur3e_arm = ur_kinematics.URKinematics("ur3e_pen")
 
 @pytest.fixture
 def ik_result():
