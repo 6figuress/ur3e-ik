@@ -20,3 +20,9 @@ dynamic = ["license"]
 
 [tool.uv.sources]
 security = { git = "https://github.com/6figuress/SecurityModule.git" }
+
+[dependency-groups]
+dev = [
+    "ipdb>=0.13.13",
+    "pytest>=8.3.5",
+]
