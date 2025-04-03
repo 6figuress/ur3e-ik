@@ -279,29 +279,45 @@ class TrajectoryPlanner:
 if __name__ == "__main__":
     import numpy as np
 
-    # Define the shape
-    shape = (5000, 5, 6)
+    def benchmark():
+        # Define the shape
+        shape = (5000, 5, 6)
 
-    # Generate random numbers between -pi and pi
-    random_numbers = np.random.uniform(-np.pi, np.pi, shape)
+        # Generate random numbers between -pi and pi
+        random_numbers = np.random.uniform(-np.pi, np.pi, shape)
 
-    # Display the shape of the generated array to confirm
-    random_numbers.shape
+        # Display the shape of the generated array to confirm
+        random_numbers.shape
 
-    toCompute = random_numbers.tolist()
+        toCompute = random_numbers.tolist()
 
-    planner = TrajectoryPlanner(JOINT_WEIGHT_ARR)
+        planner = TrajectoryPlanner(JOINT_WEIGHT_ARR)
 
-    then = datetime.datetime.now()
+        then = datetime.datetime.now()
 
-    print("Starting")
+        print("Starting")
 
-    best = planner.best_first_search(toCompute)
+        best = planner.best_first_search(toCompute)
 
-    now = datetime.datetime.now()
+        now = datetime.datetime.now()
 
-    print("Took : ", now - then)
+        print("Took : ", now - then)
 
-    import ipdb
+    def test_holes():
+        angles = [
+            [
+                [1, 1, 1, 1, 1, 1],
+                [2, 2, 2, 2, 2, 2],
+            ],
+            [[2, 2, 2, 2, 2, 2]],
+            [],
+            [[3, 3, 3, 3, 3, 3]],
+        ]
 
-    ipdb.set_trace()
+        planner = TrajectoryPlanner(JOINT_WEIGHT_ARR)
+        best = planner.best_first_search(angles)
+        import ipdb
+
+        ipdb.set_trace()
+
+    test_holes()
