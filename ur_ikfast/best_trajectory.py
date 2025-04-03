@@ -11,9 +11,6 @@ import heapq
 from typing import List, Tuple, Dict, Optional
 from dataclasses import dataclass, field
 
-from security.collisionChecking import RobotCollisionCheck
-
-
 
 # Assuming JOINT_WEIGHT_ARR is defined elsewhere
 # If not, we'll define a default
